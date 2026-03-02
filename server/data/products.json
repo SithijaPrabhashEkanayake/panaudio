@@ -1,0 +1,68 @@
+[
+    {
+        "id": "prod-2",
+        "name": "EIKI EK-720LU Laser Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions",
+        "description": "7,200 Lumen WUXGA Laser Professional Projector.",
+        "featured": true,
+        "image": "/uploads/1772446444708.jpg"
+    },
+    {
+        "id": "prod-3",
+        "name": "JBL Professional Line Array",
+        "brand": "JBL",
+        "category": "Audio Visual Solutions",
+        "description": "Precision audio coverage for auditoriums and events.",
+        "featured": true
+    },
+    {
+        "id": "prod-4",
+        "name": "Logitech Rally Bar",
+        "brand": "Logitech",
+        "category": "Video Conference System",
+        "description": "All-in-one video bar for mid to large meeting rooms.",
+        "featured": true
+    },
+    {
+        "id": "prod-5",
+        "name": "Huawei AirEngine Wi-Fi 6",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "Enterprise-grade wireless access points with high capacity.",
+        "featured": true
+    },
+    {
+        "id": "prod-6",
+        "name": "Hikvision 4K DarkFighter",
+        "brand": "Hikvision",
+        "category": "Security & Surveillance",
+        "description": "Ultra-low light network camera for 24/7 color imaging.",
+        "featured": true
+    },
+    {
+        "id": "prod-7",
+        "name": "Yealink MeetingBoard",
+        "brand": "Yealink",
+        "category": "Video Conference System",
+        "description": "Interactive smart board with built-in video conferencing.",
+        "featured": false
+    },
+    {
+        "id": "prod-8",
+        "name": "Asustor Lockerstor 8",
+        "brand": "Asustor",
+        "category": "Data Storage",
+        "description": "8-Bay enterprise NAS for robust data management.",
+        "featured": false
+    },
+    {
+        "id": "prod-1772446215943",
+        "name": "Pro Audio Mixer",
+        "brand": "DSPPA",
+        "category": "Audio Visual Solutions",
+        "description": "To get the perfect sound you are looking for, you need a perfect professional mixing console. Choose from a range of DSPPA mixers to get the high-quality, consistent performance you are looking for in a digital soundboard settings. Mixing console is a key component to manage recorded audios of conference scenarios, as it allows you to adjust various incoming signals to make the highest quality output possible. It is ideal for different sizes of conference rooms, auditoriums, churches, etc.",
+        "featured": true,
+        "image": "/uploads/1772446215918.jpg"
+    }
+]

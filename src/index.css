@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-base text-text-primary;
+  }
+}
+
+@layer components {
+
+  /* Glass Light */
+  .glass-light {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.80);
+  }
+
+  /* Glass Dark */
+  .glass-dark {
+    position: relative;
+    background: rgba(19, 17, 16, 0.84);
+    backdrop-filter: blur(28px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .glass-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #E8471C, transparent);
+    opacity: 0.8;
+  }
+
+  /* Glass Nav */
+  .glass-nav {
+    background: rgba(247, 247, 245, 0.82);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(235, 235, 235, 0.60);
+    box-shadow: 0 1px 24px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Glass Modal */
+  .glass-modal {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.60);
+    border-radius: 32px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  /* Fallback Firefox */
+  @supports not (backdrop-filter: blur(24px)) {
+    .glass-light {
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .glass-dark {
+      background: rgba(19, 17, 16, 0.95);
+    }
+
+    .glass-nav {
+      background: rgba(247, 247, 245, 0.98);
+    }
+
+    .glass-modal {
+      background: rgba(255, 255, 255, 0.98);
+    }
+  }
+}
+
+@layer utilities {
+  .animate-glow-pulse {
+    animation: glow-pulse 3s infinite;
+  }
+
+  .animate-glow-pulse-green {
+    animation: glow-pulse-green 3s infinite;
+  }
+
+  .animate-float-up-down {
+    animation: float-up-down 4s ease-in-out infinite;
+  }
+
+  .animate-scroll-bounce {
+    animation: scroll-bounce 2s infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  .animate-marquee-slow {
+    animation: marquee 40s linear infinite reverse;
+    display: flex;
+    width: max-content;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 16px rgba(232, 71, 28, 0.20), 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  50% {
+    box-shadow: 0 0 36px rgba(232, 71, 28, 0.40), 0 16px 48px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@keyframes glow-pulse-green {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.30);
+  }
+
+  50% {
+    box-shadow: 0 4px 32px rgba(37, 211, 102, 0.55);
+  }
+}
+
+@keyframes float-up-down {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes scroll-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

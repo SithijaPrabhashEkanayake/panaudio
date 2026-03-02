@@ -1,0 +1,236 @@
+[
+    {
+        "id": "proj-1",
+        "name": "National Institute of Education (NIE)",
+        "client": "NIE",
+        "category": "Government & Education",
+        "scope": "AV & Networking",
+        "featured": false,
+        "image": "/uploads/1772451156316.jpg"
+    },
+    {
+        "id": "proj-2",
+        "name": "Kotelawala Defence University (KDU)",
+        "client": "KDU",
+        "category": "Government & Education",
+        "scope": "Advanced AV & Networking",
+        "featured": false,
+        "image": "/uploads/1772451209583.jpg"
+    },
+    {
+        "id": "proj-3",
+        "name": "Panadura Divisional Secretariat",
+        "client": "Government",
+        "category": "Government & Education",
+        "scope": "AV Systems",
+        "featured": false,
+        "image": "/uploads/1772451289746.jpg"
+    },
+    {
+        "id": "proj-4",
+        "name": "University of Peradeniya",
+        "client": "UoP",
+        "category": "Government & Education",
+        "scope": "Smart Learning & Campus Connectivity",
+        "featured": false,
+        "image": "/uploads/1772451375960.jpg"
+    },
+    {
+        "id": "proj-5",
+        "name": "University of Kelaniya",
+        "client": "UoK",
+        "category": "Government & Education",
+        "scope": "Smart Learning",
+        "featured": false,
+        "image": "/uploads/1772451402511.jpg"
+    },
+    {
+        "id": "proj-6",
+        "name": "University of Kilinochchi",
+        "client": "University",
+        "category": "Government & Education",
+        "scope": "Smart Campus",
+        "featured": false,
+        "image": "/uploads/1772451452845.jpg"
+    },
+    {
+        "id": "proj-7",
+        "name": "University of Colombo",
+        "client": "UoC",
+        "category": "Government & Education",
+        "scope": "AV & Connectivity",
+        "featured": false,
+        "image": "/uploads/1772451533831.jpg"
+    },
+    {
+        "id": "proj-8",
+        "name": "University of Ruhunu",
+        "client": "UoR",
+        "category": "Government & Education",
+        "scope": "Campus Networking",
+        "featured": false,
+        "image": "/uploads/1772451563772.jpg"
+    },
+    {
+        "id": "proj-9",
+        "name": "University of Moratuwa",
+        "client": "UoM",
+        "category": "Government & Education",
+        "scope": "Digital & Multimedia Infrastructure",
+        "featured": true,
+        "image": "/uploads/1772451610848.jpg"
+    },
+    {
+        "id": "proj-10",
+        "name": "SLIIT",
+        "client": "SLIIT",
+        "category": "Government & Education",
+        "scope": "Smart Campus Connectivity",
+        "featured": false,
+        "image": "/uploads/1772451629692.jpg"
+    },
+    {
+        "id": "proj-11",
+        "name": "University of Vavuniya",
+        "client": "University",
+        "category": "Government & Education",
+        "scope": "Multimedia Upgrade",
+        "featured": false,
+        "image": "/uploads/1772451649089.png"
+    },
+    {
+        "id": "proj-12",
+        "name": "University of Gampaha Wickramarachchi",
+        "client": "University",
+        "category": "Government & Education",
+        "scope": "Digital Infrastructure",
+        "featured": false,
+        "image": "/uploads/1772451667387.jpg"
+    },
+    {
+        "id": "proj-13",
+        "name": "Methodist College",
+        "client": "College",
+        "category": "Government & Education",
+        "scope": "AV & PA Installation",
+        "featured": false,
+        "image": "/uploads/1772451686783.jpg"
+    },
+    {
+        "id": "proj-14",
+        "name": "Visakha Vidyalaya",
+        "client": "College",
+        "category": "Government & Education",
+        "scope": "AV & PA Installation",
+        "featured": false,
+        "image": "/uploads/1772451752948.jpg"
+    },
+    {
+        "id": "proj-15",
+        "name": "Ministry of Higher Education",
+        "client": "Government",
+        "category": "Government & Education",
+        "scope": "High-Performance Systems",
+        "featured": false,
+        "image": "/uploads/1772451776606.jpg"
+    },
+    {
+        "id": "proj-16",
+        "name": "Sri Lanka Broadcasting Corporation (SLBC)",
+        "client": "SLBC",
+        "category": "Government & Education",
+        "scope": "Broadcasting Systems",
+        "featured": false,
+        "image": "/uploads/1772451815323.webp"
+    },
+    {
+        "id": "proj-17",
+        "name": "WNS",
+        "client": "WNS",
+        "category": "Corporate",
+        "scope": "Integrated AV, IT & Safety",
+        "featured": false,
+        "image": "/uploads/1772451833761.jpg"
+    },
+    {
+        "id": "proj-18",
+        "name": "Orion City",
+        "client": "Orion City",
+        "category": "Corporate",
+        "scope": "AV & Safety Solutions",
+        "featured": false,
+        "image": "/uploads/1772451849255.webp"
+    },
+    {
+        "id": "proj-19",
+        "name": "Abans Group",
+        "client": "Abans",
+        "category": "Corporate",
+        "scope": "Operational & Communication",
+        "featured": false,
+        "image": "/uploads/1772451867031.jpg"
+    },
+    {
+        "id": "proj-20",
+        "name": "Majestic City",
+        "client": "Majestic City",
+        "category": "Corporate",
+        "scope": "AV & Network Solutions",
+        "featured": false,
+        "image": "/uploads/1772451883283.jpg"
+    },
+    {
+        "id": "proj-21",
+        "name": "Bullers Lane Residencies",
+        "client": "Residencies",
+        "category": "Corporate",
+        "scope": "Safety & AV",
+        "featured": false,
+        "image": "/uploads/1772451915785.webp"
+    },
+    {
+        "id": "proj-22",
+        "name": "Five Holdings",
+        "client": "Five Holdings",
+        "category": "Corporate",
+        "scope": "AV Solutions",
+        "featured": false,
+        "image": "/uploads/1772451935837.jpg"
+    },
+    {
+        "id": "proj-23",
+        "name": "IDH Hospital",
+        "client": "IDH",
+        "category": "Healthcare & Government",
+        "scope": "High-Performance Systems",
+        "featured": true,
+        "image": "/uploads/1772451952765.jpg"
+    },
+    {
+        "id": "proj-24",
+        "name": "Colombo Municipal Council",
+        "client": "CMC",
+        "category": "Healthcare & Government",
+        "scope": "Secure & Scalable Technologies",
+        "featured": true,
+        "image": "/uploads/1772451967323.jpg"
+    },
+    {
+        "id": "proj-25",
+        "name": "Ceylon Petroleum Corporation Sapugaskanda",
+        "client": "CPC",
+        "category": "Healthcare & Government",
+        "scope": "Safety & AV",
+        "featured": false,
+        "image": "/uploads/1772451985882.webp"
+    },
+    {
+        "id": "proj-26",
+        "name": "Sirimavo Bandaranayake Specialized Children's Hospital",
+        "client": "Hospital",
+        "category": "Healthcare & Government",
+        "scope": "AV & PA Systems",
+        "featured": false,
+        "image": "/uploads/1772452010934.jpg"
+    }
+]
