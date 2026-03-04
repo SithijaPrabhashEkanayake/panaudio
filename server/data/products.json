@@ -1,68 +1,855 @@
 [
     {
-        "id": "prod-2",
-        "name": "EIKI EK-720LU Laser Projector",
-        "brand": "EIKI",
-        "category": "Video Solutions",
-        "description": "7,200 Lumen WUXGA Laser Professional Projector.",
-        "featured": true,
-        "image": "/uploads/1772446444708.jpg"
-    },
-    {
-        "id": "prod-3",
-        "name": "JBL Professional Line Array",
-        "brand": "JBL",
-        "category": "Audio Visual Solutions",
-        "description": "Precision audio coverage for auditoriums and events.",
-        "featured": true
-    },
-    {
-        "id": "prod-4",
-        "name": "Logitech Rally Bar",
-        "brand": "Logitech",
-        "category": "Video Conference System",
-        "description": "All-in-one video bar for mid to large meeting rooms.",
-        "featured": true
-    },
-    {
-        "id": "prod-5",
-        "name": "Huawei AirEngine Wi-Fi 6",
-        "brand": "Huawei",
-        "category": "Networking",
-        "description": "Enterprise-grade wireless access points with high capacity.",
-        "featured": true
-    },
-    {
-        "id": "prod-6",
-        "name": "Hikvision 4K DarkFighter",
-        "brand": "Hikvision",
-        "category": "Security & Surveillance",
-        "description": "Ultra-low light network camera for 24/7 color imaging.",
-        "featured": true
-    },
-    {
-        "id": "prod-7",
-        "name": "Yealink MeetingBoard",
-        "brand": "Yealink",
-        "category": "Video Conference System",
-        "description": "Interactive smart board with built-in video conferencing.",
-        "featured": false
-    },
-    {
-        "id": "prod-8",
-        "name": "Asustor Lockerstor 8",
-        "brand": "Asustor",
-        "category": "Data Storage",
-        "description": "8-Bay enterprise NAS for robust data management.",
-        "featured": false
-    },
-    {
-        "id": "prod-1772446215943",
-        "name": "Pro Audio Mixer",
+        "id": "prod-10",
+        "name": "DSPPA Digitally Steerable Speaker",
         "brand": "DSPPA",
         "category": "Audio Visual Solutions",
-        "description": "To get the perfect sound you are looking for, you need a perfect professional mixing console. Choose from a range of DSPPA mixers to get the high-quality, consistent performance you are looking for in a digital soundboard settings. Mixing console is a key component to manage recorded audios of conference scenarios, as it allows you to adjust various incoming signals to make the highest quality output possible. It is ideal for different sizes of conference rooms, auditoriums, churches, etc.",
+        "description": "Advanced line-array digitally steerable speaker with software and hardware DSP components delivering high speech intelligibility, music enhancement, and complete loudspeaker system diagnostics and monitoring.",
         "featured": true,
-        "image": "/uploads/1772446215918.jpg"
+        "image": "/uploads/Digitally Steerable Speaker.png"
+    },
+    {
+        "id": "prod-11",
+        "name": "DSPPA Professional Speaker",
+        "brand": "DSPPA",
+        "category": "Audio Visual Solutions",
+        "description": "Professional speakers as essential components of conference systems, available from single units to a full wall of interlinked speakers for any venue size.",
+        "featured": true,
+        "image": "/uploads/Professional Speaker.png"
+    },
+    {
+        "id": "prod-12",
+        "name": "DSPPA Professional Amplifier",
+        "brand": "DSPPA",
+        "category": "Audio Visual Solutions",
+        "description": "Professional amplifier system with balanced power and audio signal options, available in lightweight portable and stationary configurations for churches, theaters, and conference environments.",
+        "featured": false,
+        "image": "/uploads/Professional Amplifier.png"
+    },
+    {
+        "id": "prod-13",
+        "name": "DSPPA Audio Processor",
+        "brand": "DSPPA",
+        "category": "Audio Visual Solutions",
+        "description": "Top-of-the-line audio processor with precise equalization, adjustable crossover, signal delay, and signal summing/distribution for superior audio quality and functionality.",
+        "featured": false,
+        "image": "/uploads/Audio Processor.png"
+    },
+    {
+        "id": "prod-14",
+        "name": "DSPPA Audio Conferencing System",
+        "brand": "DSPPA",
+        "category": "Audio Visual Solutions",
+        "description": "Complete digital conference system for rooms of all sizes. A reference in conferencing technology offering powerful audio and video connections for professional environments.",
+        "featured": false,
+        "image": "/uploads/digital conference system.png"
+    },
+    {
+        "id": "prod-15",
+        "name": "DSPPA Line Array Speaker",
+        "brand": "DSPPA",
+        "category": "Audio Visual Solutions",
+        "description": "Easy to configure, exceedingly light, and tremendously versatile line array speaker system optimised for auditorium sound with high-quality speech and music playback.",
+        "featured": false,
+        "image": "/uploads/Line Array Speaker.png"
+    },
+    {
+        "id": "prod-16",
+        "name": "Megaphone Solution",
+        "category": "Audio Visual Solutions",
+        "description": "Professional megaphone for police and crowd control with 200m range, voice enhance, alarm siren, built-in HD camera, USB, tuner, LED torch, volume control, and voice recording with Li-Ion or dry battery support.",
+        "featured": false,
+        "image": "/uploads/Megaphone Solutions.png"
+    },
+    {
+        "id": "prod-17",
+        "name": "JBL Subwoofers",
+        "brand": "JBL",
+        "category": "Audio Visual Solutions",
+        "description": "Feel the room shake with low-frequency bass. JBL subwoofers create a thrilling listening environment for immersive home and professional audio experiences.",
+        "featured": false,
+        "image": "/uploads/Subwoofers.png"
+    },
+    {
+        "id": "prod-18",
+        "name": "JBL Bookshelf Speakers",
+        "brand": "JBL",
+        "category": "Audio Visual Solutions",
+        "description": "Compact and powerful JBL bookshelf speakers delivering crystal-clear audio for an immersive listening experience in any room.",
+        "featured": false,
+        "image": "/uploads/Bookshelf Speakers.png"
+    },
+    {
+        "id": "prod-19",
+        "name": "JBL Stereo Hi-Fi Electronics",
+        "brand": "JBL",
+        "category": "Audio Visual Solutions",
+        "description": "Stereo Hi-Fi components designed as the perfect companions to JBL loudspeakers, delivering high-fidelity audio performance.",
+        "featured": false,
+        "image": "/uploads/Electronics.png"
+    },
+    {
+        "id": "prod-20",
+        "name": "JBL Floor-Standing Speakers",
+        "brand": "JBL",
+        "category": "Audio Visual Solutions",
+        "description": "Powerful sound and bold design for any room. JBL floor-standing and Bluetooth tower speakers deliver impactful audio for home and professional environments.",
+        "featured": false,
+        "image": "/uploads/Floor-Standing Speakers.png"
+    },
+    {
+        "id": "prod-21",
+        "name": "EIKI EK-129X Laser Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "5,000 Lumens XGA (1024x768) laser projector with 4:3 aspect ratio, lampless blue laser and phosphor technology, and 3LCD display engine for reliable long-life projection.",
+        "featured": false,
+        "image": "/uploads/EK-129X.png"
+    },
+    {
+        "id": "prod-22",
+        "name": "EIKI EK-130U Laser Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "5,000 Lumens WUXGA (1920x1200) laser projector with 16:10 aspect ratio, 2 HDMI inputs (1 with MHL), Crestron RoomView and AMX Device Discovery compatibility, and 3LCD engine.",
+        "featured": false,
+        "image": "/uploads/EK-130U.png"
+    },
+    {
+        "id": "prod-23",
+        "name": "EIKI EK-500LU Laser Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "5,000 Lumens WUXGA (1920x1200) laser projector with 16:10 aspect ratio, lampless laser technology (Blue + Phosphor), and 3LCD engine for professional installations.",
+        "featured": false,
+        "image": "/uploads/EK-500LU.png"
+    },
+    {
+        "id": "prod-24",
+        "name": "EIKI Entry Level Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Entry-level projector designed for everyday use, offering clear visuals, simple setup, and reliable performance. Ideal for home, office, or classroom presentations balancing affordability with essential features.",
+        "featured": false,
+        "image": "/uploads/EK-129X.png"
+    },
+    {
+        "id": "prod-25",
+        "name": "EIKI Boardroom Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "High-performance boardroom projector delivering bright, sharp visuals with advanced connectivity for seamless integration with laptops and conferencing systems in corporate environments.",
+        "featured": false,
+        "image": "/uploads/EK-720LU.png"
+    },
+    {
+        "id": "prod-26",
+        "name": "EIKI Short Throw Projector",
+        "brand": "EIKI",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Short throw projector engineered to deliver large, bright images from a short distance. Perfect for classrooms, offices, and small spaces, minimising shadows and glare while maximising clarity.",
+        "featured": false,
+        "image": "/uploads/EK-500LU.png"
+    },
+    {
+        "id": "prod-27",
+        "name": "Basic Monitor 19-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Compact 19-inch high-quality monitor for basic everyday use, suitable for workstations with limited desk space.",
+        "featured": false,
+        "image": "/uploads/Monitors.png"
+    },
+    {
+        "id": "prod-28",
+        "name": "Office Monitor 22-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "22-inch office monitor offering clear visuals and reliable performance for everyday office tasks and productivity.",
+        "featured": false,
+        "image": "/uploads/Monitors.png"
+    },
+    {
+        "id": "prod-29",
+        "name": "Standard Monitor 24-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "24-inch standard monitor delivering sharp, accurate display for general professional use and multimedia consumption.",
+        "featured": false,
+        "image": "/uploads/Monitors.png"
+    },
+    {
+        "id": "prod-30",
+        "name": "Professional Monitor 27-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "27-inch professional-grade monitor ideal for design, content creation, and detailed professional tasks requiring accurate colour and resolution.",
+        "featured": false,
+        "image": "/uploads/Monitors.png"
+    },
+    {
+        "id": "prod-31",
+        "name": "Wide Monitor 32-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "32-inch wide-format monitor offering expansive screen real estate for multitasking, professional workflows, and immersive viewing.",
+        "featured": false,
+        "image": "/uploads/Monitors.png"
+    },
+    {
+        "id": "prod-32",
+        "name": "Ultra-Wide Monitor 34-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "34-inch ultra-wide monitor designed for demanding professional tasks, offering exceptional horizontal workspace and immersive visuals.",
+        "featured": false,
+        "image": "/uploads/Monitors.png"
+    },
+    {
+        "id": "prod-33",
+        "name": "Interactive Smart Board 65-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Compact 65-inch smart board with multi-touch interaction, wireless sharing, and collaboration tools. Ideal for classrooms and small meeting rooms.",
+        "featured": false,
+        "image": "/uploads/Interactive Smart Board.png"
+    },
+    {
+        "id": "prod-34",
+        "name": "Interactive Smart Board 75-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Versatile 75-inch smart board offering bright visuals, responsive touch, and seamless connectivity. Perfect for boardrooms, training, and education.",
+        "featured": false,
+        "image": "/uploads/Interactive Smart Board.png"
+    },
+    {
+        "id": "prod-35",
+        "name": "Interactive Smart Board 85-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Large 85-inch interactive smart board with wide display, powerful conferencing features, and seamless collaboration tools for corporate and educational use.",
+        "featured": false,
+        "image": "/uploads/Interactive Smart Board.png"
+    },
+    {
+        "id": "prod-36",
+        "name": "Interactive Smart Board 98-inch",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Expansive 98-inch smart board ideal for auditoriums, executive meetings, and large classrooms. Stunning visuals, multi-touch interactivity, and advanced collaboration tools.",
+        "featured": false,
+        "image": "/uploads/Interactive Smart Board.png"
+    },
+    {
+        "id": "prod-37",
+        "name": "Smart TVs for Digital Signage",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Commercial smart TVs delivering vibrant, high-resolution displays for advertisements, announcements, and information boards. Built-in connectivity and easy content management for retail, offices, and public spaces.",
+        "featured": false,
+        "image": "/uploads/Smart TVs for digital signatures.png"
+    },
+    {
+        "id": "prod-38",
+        "name": "LED Wall Display",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Seamless high-resolution LED walls for large-scale digital signage, events, and presentations. Vibrant colours, wide viewing angles, and flexible sizing for auditoriums, retail, control rooms, and outdoor advertising.",
+        "featured": false,
+        "image": "/uploads/LED Wall.png"
+    },
+    {
+        "id": "prod-39",
+        "name": "Tripod Projector Screen",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Portable, foldable projection screen with tripod stand. Ideal for presentations in classrooms, offices, or small meeting spaces requiring easy setup and mobility.",
+        "featured": false,
+        "image": "/uploads/Projector Screen.png"
+    },
+    {
+        "id": "prod-40",
+        "name": "Manual Projector Screen",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Wall-mounted retractable screen with manual pull-down operation. Simple, reliable, and space-saving for classrooms or boardrooms.",
+        "featured": false,
+        "image": "/uploads/Projector Screen.png"
+    },
+    {
+        "id": "prod-41",
+        "name": "Motorised Projector Screen",
+        "category": "Video Solutions (Projectors & Displays)",
+        "description": "Electric retractable screen with remote control operation. Perfect for boardrooms, auditoriums, or professional presentations requiring convenience and ease.",
+        "featured": false,
+        "image": "/uploads/Projector Screen.png"
+    },
+    {
+        "id": "prod-42",
+        "name": "DSPPA HD Web Camera",
+        "brand": "DSPPA",
+        "category": "Video Conference System",
+        "description": "High-quality web camera with HD or Full HD resolution, built-in microphone, and plug-and-play connectivity. Compact and easy to mount for remote meetings, online teaching, and content creation.",
+        "featured": false,
+        "image": "/uploads/Web Cameras.png"
+    },
+    {
+        "id": "prod-43",
+        "name": "Yealink Video Conference System",
+        "brand": "Yealink",
+        "category": "Video Conference System",
+        "description": "HD audio and video conferencing solution for small to large meeting rooms with reliable connectivity, intuitive controls, and seamless PC integration for hybrid work environments.",
+        "featured": true,
+        "image": "/uploads/YEALINK Video Conference.png"
+    },
+    {
+        "id": "prod-44",
+        "name": "Yealink All-in-One Panel",
+        "brand": "Yealink",
+        "category": "Video Conference System",
+        "description": "All-in-one video conference panel combining camera, microphone, speaker, and touch control in a single device. Designed for small to medium meeting rooms with seamless integration.",
+        "featured": false,
+        "image": "/uploads/YEALINK All in one panel video conference solutions.png"
+    },
+    {
+        "id": "prod-45",
+        "name": "Polycom Video Conference System",
+        "category": "Video Conference System",
+        "description": "High-definition audio and video conferencing system designed for boardrooms and offices. Provides clear communication, reliable connectivity, and easy integration with laptops and networks.",
+        "featured": false,
+        "image": "/uploads/Polycom Video Conference.png"
+    },
+    {
+        "id": "prod-46",
+        "name": "Local Area Network Solution",
+        "category": "Networking",
+        "description": "Complete LAN solution connecting computers, devices, and servers within offices, buildings, or campuses. Enables high-speed data transfer, resource sharing, internet access, and secure communication.",
+        "featured": false,
+        "image": "/uploads/Local Area Network.png"
+    },
+    {
+        "id": "prod-47",
+        "name": "Huawei Wi-Fi Access Points",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "Enterprise-grade Huawei access points providing reliable wireless connectivity for offices, campuses, and public spaces with high-speed Wi-Fi, seamless roaming, and secure network access.",
+        "featured": false,
+        "image": "/uploads/huawei WiFi access point.png"
+    },
+    {
+        "id": "prod-48",
+        "name": "Huawei PoE Network Switch",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "Power over Ethernet switch delivering both power and data over Ethernet to devices like IP cameras and phones. Ideal for simplified deployments without separate power cabling.",
+        "featured": false,
+        "image": "/uploads/huawei Network Switches.png"
+    },
+    {
+        "id": "prod-49",
+        "name": "Huawei Non-PoE Network Switch",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "Standard Huawei network switch for data-only connectivity. Reliable and straightforward for office and small network setups.",
+        "featured": false,
+        "image": "/uploads/huawei Network Switches.png"
+    },
+    {
+        "id": "prod-50",
+        "name": "Huawei Web Managed Switch",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "Network switch with web interface for configuration and monitoring. Offers moderate control and network management features for growing business networks.",
+        "featured": false,
+        "image": "/uploads/huawei Network Switches.png"
+    },
+    {
+        "id": "prod-51",
+        "name": "Huawei Fully Managed Switch",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "Advanced enterprise switch with full Layer 2/3 features, VLANs, QoS, and monitoring. Suitable for networks requiring complete control and high performance.",
+        "featured": false,
+        "image": "/uploads/huawei Network Switches.png"
+    },
+    {
+        "id": "prod-52",
+        "name": "Huawei Core Switch",
+        "brand": "Huawei",
+        "category": "Networking",
+        "description": "High-performance core switch for central network backbone. Supports large-scale traffic, redundancy, and advanced routing for enterprise-grade network infrastructure.",
+        "featured": false,
+        "image": "/uploads/huawei Network Switches.png"
+    },
+    {
+        "id": "prod-53",
+        "name": "Network Firewall",
+        "category": "Networking",
+        "description": "Network security device that monitors and controls incoming and outgoing traffic based on predefined rules. Protects networks from unauthorized access, cyber threats, and malware.",
+        "featured": false,
+        "image": "/uploads/Firewall.png"
+    },
+    {
+        "id": "prod-54",
+        "name": "Enterprise Server",
+        "category": "Networking",
+        "description": "High-performance server providing data, applications, and services over a network. Designed for reliability, scalability, and continuous operation supporting virtualization and enterprise applications.",
+        "featured": false,
+        "image": "/uploads/Server.png"
+    },
+    {
+        "id": "prod-55",
+        "name": "Fiber Structured Cabling",
+        "category": "Networking",
+        "description": "High-speed, reliable network connectivity using optical fiber cables. Ideal for enterprise, campus, and data center networks supporting long-distance communication and high bandwidth.",
+        "featured": false,
+        "image": "/uploads/Fiber Structure Cabling.png"
+    },
+    {
+        "id": "prod-56",
+        "name": "Wall Mounted Network Rack",
+        "category": "Networking",
+        "description": "Compact rack mounted on the wall for small networks. Ideal for saving space while securely housing servers, switches, and patch panels.",
+        "featured": false,
+        "image": "/uploads/Wall Mounted.png"
+    },
+    {
+        "id": "prod-57",
+        "name": "Floor Stand Network Rack",
+        "category": "Networking",
+        "description": "Free-standing rack for medium to large networks. Provides robust support and organized installation of networking equipment in server rooms and data centers.",
+        "featured": false,
+        "image": "/uploads/Floor Stand.png"
+    },
+    {
+        "id": "prod-58",
+        "name": "Cable Trays and Trunking",
+        "category": "Networking",
+        "description": "Cable management accessories for organized, safe, and professional cable routing. Reduces clutter and maintains network performance in server rooms and data centers.",
+        "featured": false,
+        "image": "/uploads/Cable Trays and trunking.png"
+    },
+    {
+        "id": "prod-59",
+        "name": "Hikvision Analog Camera System",
+        "brand": "Hikvision",
+        "category": "Security & Surveillance",
+        "description": "Traditional CCTV system with analog cameras for reliable basic surveillance. Records video to DVRs and is ideal for small to medium installations.",
+        "featured": false,
+        "image": "/uploads/Analog Camera System.png"
+    },
+    {
+        "id": "prod-60",
+        "name": "Hikvision Network Camera System",
+        "brand": "Hikvision",
+        "category": "Security & Surveillance",
+        "description": "Digital IP camera system providing high-definition video over LAN. Supports remote access, advanced analytics, and scalable security for enterprise or campus environments.",
+        "featured": false,
+        "image": "/uploads/Network Camera System.png"
+    },
+    {
+        "id": "prod-61",
+        "name": "Hikvision Wireless Camera System",
+        "brand": "Hikvision",
+        "category": "Security & Surveillance",
+        "description": "Wi-Fi enabled cameras for flexible, cable-free installation. Ideal for homes or offices providing easy setup, remote monitoring, and real-time alerts.",
+        "featured": false,
+        "image": "/uploads/Wireless Camera System.png"
+    },
+    {
+        "id": "prod-62",
+        "name": "Fixed Fingerprint Machine",
+        "category": "Security & Surveillance",
+        "description": "Biometric device for secure access control and attendance management. Fast, accurate fingerprint recognition with multiple user profile storage. Ideal for offices, factories, and restricted areas.",
+        "featured": false,
+        "image": "/uploads/Fixed Fingerprint Machine.png"
+    },
+    {
+        "id": "prod-63",
+        "name": "Portable Fingerprint Machine",
+        "category": "Security & Surveillance",
+        "description": "Compact, mobile biometric device for on-the-go identity verification and attendance tracking. Fast, accurate fingerprint recognition and easy data transfer for field or remote use.",
+        "featured": false,
+        "image": "/uploads/Portable Fingerprint Machine.png"
+    },
+    {
+        "id": "prod-64",
+        "name": "Face and Biometric Detector",
+        "category": "Security & Surveillance",
+        "description": "Advanced access control device combining facial recognition and biometric authentication. Fast, accurate, and secure identification for offices, factories, and high-security areas.",
+        "featured": false,
+        "image": "/uploads/Face and Biometric Detectors .png"
+    },
+    {
+        "id": "prod-65",
+        "name": "Access Control System",
+        "category": "Security & Surveillance",
+        "description": "Comprehensive security solution for managing entry and exit of personnel. Supports keycards, biometric, or PIN access for secure, monitored, and efficient control of restricted areas.",
+        "featured": false,
+        "image": "/uploads/Access Control System .png"
+    },
+    {
+        "id": "prod-66",
+        "name": "Video Door Phone",
+        "category": "Security & Surveillance",
+        "description": "Secure real-time audio and video communication at entry points. Ideal for homes, offices, and gated communities allowing remote access control and visitor monitoring.",
+        "featured": false,
+        "image": "/uploads/Video Door phone.png"
+    },
+    {
+        "id": "prod-67",
+        "name": "Automatic Gate Barrier System",
+        "category": "Security & Surveillance",
+        "description": "Motorised barrier system for secure vehicle access control. Ideal for offices, parking lots, and gated communities with fast operation, safety sensors, and reliable automated entry management.",
+        "featured": false,
+        "image": "/uploads/Automatic Gate Barriers Solutions.png"
+    },
+    {
+        "id": "prod-68",
+        "name": "Entry Level Fire Alarm System",
+        "category": "Security & Surveillance",
+        "description": "Basic fire detection system for small offices or buildings. Provides reliable smoke and heat detection with simple installation and easy monitoring.",
+        "featured": false,
+        "image": "/uploads/Entry Level Fire Alarm System .png"
+    },
+    {
+        "id": "prod-69",
+        "name": "Industrial Fire Alarm System",
+        "category": "Security & Surveillance",
+        "description": "Advanced fire detection for factories, warehouses, and large facilities. Multi-sensor detection, robust alerts, and integration with industrial safety systems for high-risk environments.",
+        "featured": false,
+        "image": "/uploads/Industrial Fire Alarm System.png"
+    },
+    {
+        "id": "prod-70",
+        "name": "Micro SD Card",
+        "category": "Data Storage",
+        "description": "Compact, high-speed Micro SD cards for cameras, mobile devices, and embedded systems. Available in various capacities for reliable portable data storage.",
+        "featured": false,
+        "image": "/uploads/Micro SD Card.png"
+    },
+    {
+        "id": "prod-71",
+        "name": "CD and DVD Media",
+        "category": "Data Storage",
+        "description": "Optical storage media for data archiving, software distribution, and multimedia. Available in recordable and rewritable formats for long-term data preservation.",
+        "featured": false,
+        "image": "/uploads/CD and DVD.png"
+    },
+    {
+        "id": "prod-72",
+        "name": "Pendrive USB Flash Drive",
+        "category": "Data Storage",
+        "description": "Portable USB flash drives for quick and easy data transfer. Available in multiple capacities with plug-and-play functionality for all operating systems.",
+        "featured": false,
+        "image": "/uploads/Pendrive.png"
+    },
+    {
+        "id": "prod-73",
+        "name": "Internal Hard Disk",
+        "category": "Data Storage",
+        "description": "High-capacity internal hard disk drives for desktop and server use. Reliable, cost-effective storage for operating systems, applications, and data.",
+        "featured": false,
+        "image": "/uploads/Hard Disk.png"
+    },
+    {
+        "id": "prod-74",
+        "name": "Portable Hard Disk",
+        "category": "Data Storage",
+        "description": "Compact portable hard disk drives for data backup and transfer on the go. USB-powered for convenient use without external power.",
+        "featured": false,
+        "image": "/uploads/Portable Hard Disk.png"
+    },
+    {
+        "id": "prod-75",
+        "name": "Asustor NAS Storage",
+        "brand": "Asustor",
+        "category": "Data Storage",
+        "description": "High-capacity NAS devices supporting file sharing, backup, multimedia streaming, and remote access. Includes RAID protection, advanced security, and scalable storage for home and business networks.",
+        "featured": false,
+        "image": "/uploads/NAS Asustor.png"
+    },
+    {
+        "id": "prod-76",
+        "name": "Line Interactive UPS",
+        "category": "Power Solutions",
+        "description": "Stable power backup with automatic voltage regulation (AVR). Ideal for offices, computers, and small servers, protecting equipment from power fluctuations and outages.",
+        "featured": false,
+        "image": "/uploads/Line Interactive UPS.png"
+    },
+    {
+        "id": "prod-77",
+        "name": "Online UPS",
+        "category": "Power Solutions",
+        "description": "Continuous, high-quality power with double-conversion technology. Zero transfer time and maximum protection for critical equipment, data centers, and industrial applications.",
+        "featured": false,
+        "image": "/uploads/Outline UPS.png"
+    },
+    {
+        "id": "prod-78",
+        "name": "Power Backup Solution",
+        "category": "Power Solutions",
+        "description": "Comprehensive power backup solutions including generators and battery systems for homes, offices, data centers, and industrial environments. Minimises downtime and protects sensitive electronics.",
+        "featured": false,
+        "image": "/uploads/Power Backup.png"
+    },
+    {
+        "id": "prod-79",
+        "name": "Solar Energy Solution",
+        "category": "Power Solutions",
+        "description": "Sustainable solar solutions including solar panels, inverters, and storage systems for homes, businesses, and industrial applications with reduced grid dependence.",
+        "featured": true,
+        "image": "/uploads/Solar Solutions.png"
+    },
+    {
+        "id": "prod-80",
+        "name": "Cool Room Monitoring System",
+        "category": "Environmental Monitoring",
+        "description": "Real-time temperature and humidity monitoring for cold storage rooms. Provides instant alerts to ensure product quality and prevent spoilage.",
+        "featured": false,
+        "image": "/uploads/Cool room Monitoring system.png"
+    },
+    {
+        "id": "prod-81",
+        "name": "Freezer Truck GPS Monitoring System",
+        "category": "Environmental Monitoring",
+        "description": "Combined temperature, humidity, and GPS location tracking for refrigerated vehicles. Ensures safe transport of perishable goods with real-time alerts and route visibility.",
+        "featured": false,
+        "image": "/uploads/Freezer truck monitoring system with GPS.png"
+    },
+    {
+        "id": "prod-82",
+        "name": "Centralized Industrial Environmental Monitor",
+        "category": "Environmental Monitoring",
+        "description": "Monitors multiple environmental parameters across industrial facilities. Centralized data collection, alerts, and reporting for temperature, humidity, air quality, and operational efficiency.",
+        "featured": false,
+        "image": "/uploads/Centralized Industrial environmental monitoring system .png"
+    },
+    {
+        "id": "prod-83",
+        "name": "Desktop Computer",
+        "category": "Computer",
+        "description": "High-performance desktop computers for office productivity, creative work, and professional applications. Configurable specifications to meet business and personal computing needs.",
+        "featured": false,
+        "image": "/uploads/Desktop Computers.png"
+    },
+    {
+        "id": "prod-84",
+        "name": "Laptop Computer",
+        "category": "Computer",
+        "description": "Portable laptop computers offering performance and mobility for business, education, and professional use. Available in various configurations for diverse computing requirements.",
+        "featured": false,
+        "image": "/uploads/Laptop Computers.png"
+    },
+    {
+        "id": "prod-85",
+        "name": "Computer Accessories",
+        "category": "Computer",
+        "description": "Essential computer peripherals and accessories including keyboards, mice, headsets, and more to enhance productivity and user experience.",
+        "featured": false,
+        "image": "/uploads/Computer Accessories .png"
+    },
+    {
+        "id": "prod-86",
+        "name": "XLR Audio Cable",
+        "category": "AV & Network Accessories",
+        "description": "Professional XLR cables for balanced audio signal transmission between microphones, mixers, and amplifiers. Built for low noise and durability in live and studio environments.",
+        "featured": false,
+        "image": "/uploads/XLR Cable.png"
+    },
+    {
+        "id": "prod-87",
+        "name": "Speaker Cable",
+        "category": "AV & Network Accessories",
+        "description": "High-quality speaker cables for connecting amplifiers to loudspeakers. Designed for minimal signal loss and maximum audio fidelity.",
+        "featured": false,
+        "image": "/uploads/Speaker Cable.png"
+    },
+    {
+        "id": "prod-88",
+        "name": "VGA Cable",
+        "category": "AV & Network Accessories",
+        "description": "Standard VGA cables for connecting computers and laptops to monitors and projectors. Reliable analog video signal transmission.",
+        "featured": false,
+        "image": "/uploads/VGA Cable.png"
+    },
+    {
+        "id": "prod-89",
+        "name": "HDMI Cable Copper",
+        "category": "AV & Network Accessories",
+        "description": "High-speed copper HDMI cables supporting full HD and 4K video transmission with audio. Ideal for shorter-distance AV installations.",
+        "featured": false,
+        "image": "/uploads/HDMI Cable – Copper.png"
+    },
+    {
+        "id": "prod-90",
+        "name": "HDMI Cable Fiber Optic",
+        "category": "AV & Network Accessories",
+        "description": "Fiber optic HDMI cables for long-distance high-definition signal transmission without quality loss. Ideal for professional AV and digital signage installations.",
+        "featured": false,
+        "image": "/uploads/HDMI Cable – Fiber.png"
+    },
+    {
+        "id": "prod-91",
+        "name": "SDI Cable",
+        "category": "AV & Network Accessories",
+        "description": "Serial Digital Interface cables for professional broadcast-quality video transmission. Standard for cameras, switchers, and professional video equipment.",
+        "featured": false,
+        "image": "/uploads/SDI Cable.png"
+    },
+    {
+        "id": "prod-92",
+        "name": "CAT 6 STP Network Cable",
+        "category": "AV & Network Accessories",
+        "description": "Category 6 shielded twisted pair cable offering enhanced protection against electromagnetic interference. Ideal for industrial or electrically noisy environments.",
+        "featured": false,
+        "image": "/uploads/CAT 6 STP Cable.png"
+    },
+    {
+        "id": "prod-93",
+        "name": "CAT 6 Patch Code",
+        "category": "AV & Network Accessories",
+        "description": "Pre-terminated CAT 6 patch cables for connecting network devices to patch panels and switches. Available in various lengths for flexible network installations.",
+        "featured": false,
+        "image": "/uploads/CAT 6 Patch Code.png"
+    },
+    {
+        "id": "prod-94",
+        "name": "Telephone Cable",
+        "category": "AV & Network Accessories",
+        "description": "Standard telephone cabling for voice communication infrastructure in offices and commercial buildings.",
+        "featured": false,
+        "image": "/uploads/Telephone Cable.png"
+    },
+    {
+        "id": "prod-95",
+        "name": "Single Mode Fiber Optic Cable",
+        "category": "AV & Network Accessories",
+        "description": "Single mode fiber cable for long-distance, high-bandwidth network connections with minimal signal attenuation. Ideal for campus and enterprise backbone installations.",
+        "featured": false,
+        "image": "/uploads/Single Mode Fiber Cable.png"
+    },
+    {
+        "id": "prod-96",
+        "name": "Multi-Mode Fiber Optic Cable",
+        "category": "AV & Network Accessories",
+        "description": "Multi-mode fiber cable for shorter-distance high-speed data transmission within buildings and data centers.",
+        "featured": false,
+        "image": "/uploads/Multi-Mode Fiber Cable.png"
+    },
+    {
+        "id": "prod-97",
+        "name": "Fiber Patch Code",
+        "category": "AV & Network Accessories",
+        "description": "Pre-terminated fiber patch cables for connecting fiber devices within patch panels and network equipment rooms.",
+        "featured": false,
+        "image": "/uploads/Fiber Patch Code.png"
+    },
+    {
+        "id": "prod-98",
+        "name": "Fiber Pigtail",
+        "category": "AV & Network Accessories",
+        "description": "Single-end fiber connectors used in fiber optic splicing for connecting fiber cables to equipment through a splice tray.",
+        "featured": false,
+        "image": "/uploads/pigtail.png"
+    },
+    {
+        "id": "prod-99",
+        "name": "UTP Patch Panel",
+        "category": "AV & Network Accessories",
+        "description": "Rack-mounted patch panel for organizing and managing UTP network cable terminations in server rooms and data centers.",
+        "featured": false,
+        "image": "/uploads/UTP Patch Code.png"
+    },
+    {
+        "id": "prod-100",
+        "name": "Keystone Jack",
+        "category": "AV & Network Accessories",
+        "description": "Modular keystone connectors for terminating network cables into wall plates and patch panels. Compatible with CAT 5e and CAT 6.",
+        "featured": false,
+        "image": "/uploads/Keystone.png"
+    },
+    {
+        "id": "prod-101",
+        "name": "Network Faceplate",
+        "category": "AV & Network Accessories",
+        "description": "Wall-mounted faceplates for housing keystone jacks and providing clean, professional cable termination points in offices and classrooms.",
+        "featured": false,
+        "image": "/uploads/Faceplate.png"
+    },
+    {
+        "id": "prod-102",
+        "name": "RJ45 Jacks",
+        "category": "AV & Network Accessories",
+        "description": "Standard RJ45 connectors for terminating CAT 5e and CAT 6 network cables. Essential for network installations and patch panel terminations.",
+        "featured": false,
+        "image": "/uploads/RJ 45 Jacks.png"
+    },
+    {
+        "id": "prod-103",
+        "name": "Networking Tools",
+        "category": "AV & Network Accessories",
+        "description": "Essential networking installation tools including crimping tools, punch-down tools, cable strippers, and testers for professional network cabling.",
+        "featured": false,
+        "image": "/uploads/Networking Tools .png"
+    },
+    {
+        "id": "prod-104",
+        "name": "Fiber Optic Accessories",
+        "category": "AV & Network Accessories",
+        "description": "Complete range of fiber optic accessories including cleaners, adapters, couplers, and splice protectors for professional fiber installations.",
+        "featured": false,
+        "image": "/uploads/Fiber Optic Accessories .png"
+    },
+    {
+        "id": "prod-105",
+        "name": "PoE Surge Protectors",
+        "category": "AV & Network Accessories",
+        "description": "Surge protection devices for Power over Ethernet networks, safeguarding IP cameras, access points, and phones from electrical surges.",
+        "featured": false,
+        "image": "/uploads/POE Surge Protectors .png"
+    },
+    {
+        "id": "prod-106",
+        "name": "VGA Switch",
+        "category": "AV & Network Accessories",
+        "description": "Allows multiple VGA sources (PCs, laptops) to connect to a single display. Ideal for meeting rooms, classrooms, or control centers requiring easy source selection.",
+        "featured": false,
+        "image": "/uploads/VGA Switch and splitters.png"
+    },
+    {
+        "id": "prod-107",
+        "name": "VGA Splitter",
+        "category": "AV & Network Accessories",
+        "description": "Duplicates a single VGA signal to multiple displays simultaneously. Perfect for presentations, digital signage, or environments needing simultaneous display across several screens.",
+        "featured": false,
+        "image": "/uploads/VGA Switch and splitters.png"
+    },
+    {
+        "id": "prod-108",
+        "name": "HDMI Switch",
+        "category": "AV & Network Accessories",
+        "description": "Connects multiple HDMI sources (laptops, media players, consoles) to a single display. Ideal for home theaters, meeting rooms, and classrooms for easy source selection.",
+        "featured": false,
+        "image": "/uploads/HDMI Switch and Splitters.png"
+    },
+    {
+        "id": "prod-109",
+        "name": "HDMI Splitter",
+        "category": "AV & Network Accessories",
+        "description": "Duplicates a single HDMI signal to multiple displays simultaneously. Perfect for presentations, digital signage, or simultaneous content viewing across several screens.",
+        "featured": false,
+        "image": "/uploads/HDMI Switch and Splitters.png"
+    },
+    {
+        "id": "prod-110",
+        "name": "VGA Extender",
+        "category": "AV & Network Accessories",
+        "description": "Extends VGA video signals over long distances using CAT5/CAT6 cabling. Ideal for classrooms, conference rooms, and control centers requiring distant display setups.",
+        "featured": false,
+        "image": "/uploads/VGA and HSMI Extenders.png"
+    },
+    {
+        "id": "prod-111",
+        "name": "HDMI Extender",
+        "category": "AV & Network Accessories",
+        "description": "Transmits HDMI signals over long distances without quality loss. Suitable for home theaters, digital signage, and professional AV installations needing high-definition content at extended range.",
+        "featured": false,
+        "image": "/uploads/VGA and HSMI Extenders.png"
+    },
+    {
+        "id": "prod-112",
+        "name": "Fiber to UTP Converter",
+        "category": "AV & Network Accessories",
+        "description": "Converts optical fiber signals to Ethernet (UTP) for seamless integration between fiber and copper networks. Ideal for extending network reach and connecting devices over long distances.",
+        "featured": false,
+        "image": "/uploads/Fiber to UTP convertors .png"
     }
 ]

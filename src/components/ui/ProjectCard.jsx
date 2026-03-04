@@ -1,7 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const ProjectCard = ({ image, projectName, client, category, scope, onClick }) => {
+const ProjectCard = ({ id, image, projectName, client, category, scope, onClick }) => {
 
     const getCategoryColor = (cat = '') => {
         const c = cat.toLowerCase();
@@ -12,13 +13,15 @@ const ProjectCard = ({ image, projectName, client, category, scope, onClick }) =
     };
 
     return (
-        <div
+        <motion.div
+            layoutId={`project-card-${id}`}
             onClick={onClick}
-            className={`group bg-white rounded-xl overflow-hidden shadow-1 border border-border-soft flex flex-col transition-all duration-300 ${onClick ? 'hover:shadow-4 hover:-translate-y-[6px] cursor-pointer' : ''}`}
+            className={`group bg-white rounded-xl overflow-hidden shadow-1 border border-border-soft flex flex-col transition-all duration-300 h-full ${onClick ? 'hover:shadow-4 hover:-translate-y-[6px] cursor-pointer' : ''}`}
         >
             {/* Image Area */}
             <div className="relative aspect-[16/10] overflow-hidden bg-bg-base">
-                <img
+                <motion.img
+                    layoutId={`project-image-${id}`}
                     src={image ? `http://localhost:5000${image}` : `https://picsum.photos/800/500?random=${Math.floor(Math.random() * 1000)}`}
                     alt={projectName}
                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
@@ -47,7 +50,7 @@ const ProjectCard = ({ image, projectName, client, category, scope, onClick }) =
                     </div>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

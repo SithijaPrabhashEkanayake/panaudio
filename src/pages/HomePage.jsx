@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Speaker, Network, Shield, Database, HeartPulse, Cpu, ArrowRight } from 'lucide-react';
 import VideoHero from '../components/ui/VideoHero';
@@ -8,6 +8,7 @@ import Button from '../components/ui/Button';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
 import GlassPanel from '../components/ui/GlassPanel';
 import ProductCard from '../components/ui/ProductCard';
+import ProductModal from '../components/ui/ProductModal';
 import ProjectCard from '../components/ui/ProjectCard';
 import { cardStagger, cardItem } from '../animations/variants';
 import { partners } from '../data/partners';
@@ -15,6 +16,7 @@ import { partners } from '../data/partners';
 const HomePage = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
     const [featuredProjects, setFeaturedProjects] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
     const h1Text = "Sound. Vision. Connection.".split(' ');
 
     useEffect(() => {
@@ -143,12 +145,35 @@ const HomePage = () => {
                 </div>
 
                 <div className="flex gap-6 px-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
-                    {featuredProducts.map((prod) => (
-                        <div key={prod.id} className="w-[85vw] md:w-[400px] flex-shrink-0 snap-center">
-                            <ProductCard {...prod} />
-                        </div>
-                    ))}
+                    <AnimatePresence>
+                        {featuredProducts.map((prod) => (
+                            <motion.div
+                                key={prod.id}
+                                layout
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3 }}
+                                className="w-[85vw] md:w-[400px] flex-shrink-0 snap-center"
+                            >
+                                <ProductCard {...prod} onClick={() => setSelectedProduct(prod)} />
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
                 </div>
+
+                <div className="mt-8 flex justify-center">
+                    <Link to="/products">
+                        <Button variant="secondary">
+                            View All Products <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                    </Link>
+                </div>
+
+                <ProductModal
+                    selectedProduct={selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
             </section>
 
             {/* SECTION 5 — Partner Logo Strip */}

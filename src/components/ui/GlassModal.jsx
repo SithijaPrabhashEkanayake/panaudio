@@ -21,12 +21,12 @@ const GlassModal = ({ isOpen, onClose, children }) => {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] grid place-items-center p-4 sm:p-6 overflow-y-auto">
+                <div className="fixed inset-0 z-[100]">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-[#131110]/55 backdrop-blur-md"
+                        className="fixed inset-0 bg-[#131110]/55 backdrop-blur-md -z-10"
                         onClick={onClose}
                     />
                     <motion.div
@@ -34,7 +34,7 @@ const GlassModal = ({ isOpen, onClose, children }) => {
                         initial="initial"
                         animate="animate"
                         exit="exit"
-                        className="relative glass-modal w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 md:p-8 rounded-3xl m-auto"
+                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-modal w-[90vw] md:w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 md:p-8 rounded-3xl"
                     >
                         <button
                             onClick={onClose}

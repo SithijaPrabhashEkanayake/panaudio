@@ -1,9 +1,10 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown } from 'lucide-react';
+import { Search, ChevronDown, Star, X } from 'lucide-react';
 import SectionEyebrow from '../components/ui/SectionEyebrow';
 import VideoHero from '../components/ui/VideoHero';
 import ProductCard from '../components/ui/ProductCard';
+import ProductModal from '../components/ui/ProductModal';
 import GlassModal from '../components/ui/GlassModal';
 import { brands } from '../data/brands';
 import { solutions } from '../data/solutions';
@@ -41,6 +42,20 @@ const ProductsPage = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') setSelectedProduct(null);
+        };
+        if (selectedProduct) {
+            document.addEventListener('keydown', handleEsc);
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+            document.removeEventListener('keydown', handleEsc);
+            document.body.style.overflow = '';
+        };
+    }, [selectedProduct]);
 
     const brandOptions = ['All', ...brands.map(b => b.name)];
     const categoryOptions = ['All', ...solutions.map(s => s.name)];
@@ -204,49 +219,10 @@ const ProductsPage = () => {
             </section>
 
             {/* Product Modal */}
-            <GlassModal isOpen={!!selectedProduct} onClose={() => setSelectedProduct(null)}>
-                {selectedProduct && (
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-8 h-full">
-                        {/* Image Section */}
-                        <div className="w-full md:w-1/2 flex-shrink-0">
-                            <div className="aspect-video md:aspect-square lg:aspect-[4/3] max-h-[40vh] md:max-h-[60vh] rounded-2xl overflow-hidden bg-bg-base relative shadow-3">
-                                <img
-                                    src={selectedProduct.image ? `http://localhost:5000${selectedProduct.image}` : `https://placehold.co/800x600/E8471C/FFFFFF?text=${encodeURIComponent(selectedProduct.name || 'Product')}`}
-                                    alt={selectedProduct.name}
-                                    className="w-full h-full object-cover md:object-contain"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Details Section */}
-                        <div className="w-full md:w-1/2 flex flex-col pt-2 pb-4 overflow-y-auto custom-scrollbar pr-2">
-                            <div className="glass-dark inline-block rounded-pill px-4 py-1.5 text-white text-xs font-sans font-bold uppercase tracking-wider mb-4 w-max shrink-0">
-                                {selectedProduct.brand}
-                            </div>
-                            <h2 className="font-sora font-bold text-2xl md:text-3xl lg:text-4xl text-text-primary mb-2 leading-tight shrink-0">
-                                {selectedProduct.name}
-                            </h2>
-                            <p className="font-sans text-[13px] font-bold text-accent uppercase tracking-wider mb-6 shrink-0">
-                                {selectedProduct.category}
-                            </p>
-
-                            <p className="font-sans text-text-secondary text-base md:text-lg leading-relaxed mb-8">
-                                {selectedProduct.description}
-                            </p>
-
-                            <div className="bg-bg-base/50 rounded-2xl p-6 border border-border-soft font-mono text-[13px] text-text-primary mt-auto shrink-0">
-                                <table className="w-full">
-                                    <tbody>
-                                        <tr><td className="py-2 text-text-muted w-1/3">Brand</td><td className="py-2 font-medium">{selectedProduct.brand}</td></tr>
-                                        <tr className="border-t border-border-soft/50"><td className="py-2 text-text-muted">Type</td><td className="py-2 font-medium">{selectedProduct.category}</td></tr>
-                                        <tr className="border-t border-border-soft/50"><td className="py-2 text-text-muted">Availability</td><td className="py-2 font-medium text-success">In Stock / Order</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </GlassModal>
+            <ProductModal
+                selectedProduct={selectedProduct}
+                onClose={() => setSelectedProduct(null)}
+            />
         </div>
     );
 };

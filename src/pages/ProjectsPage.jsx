@@ -4,7 +4,7 @@ import VideoHero from '../components/ui/VideoHero';
 import SectionEyebrow from '../components/ui/SectionEyebrow';
 import CategoryPills from '../components/ui/CategoryPills';
 import ProjectCard from '../components/ui/ProjectCard';
-import GlassModal from '../components/ui/GlassModal';
+import ProjectModal from '../components/ui/ProjectModal';
 import TestimonialCard from '../components/ui/TestimonialCard';
 
 const ProjectsPage = () => {
@@ -113,51 +113,10 @@ const ProjectsPage = () => {
             </section>
 
             {/* Project Modal */}
-            <GlassModal isOpen={!!selectedProject} onClose={() => setSelectedProject(null)}>
-                {selectedProject && (
-                    <div className="flex flex-col gap-8">
-                        <div className="w-full aspect-video max-h-[40vh] rounded-2xl overflow-hidden shadow-3 relative">
-                            <img
-                                src={selectedProject.image ? `http://localhost:5000${selectedProject.image}` : `https://picsum.photos/1200/600?random=${Math.floor(Math.random() * 1000)}`}
-                                alt={selectedProject.name}
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 md:p-8">
-                                <h2 className="font-sora font-bold text-2xl md:text-4xl lg:text-5xl text-white">
-                                    {selectedProject.name}
-                                </h2>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col md:flex-row gap-12">
-                            <div className="w-full md:w-2/3">
-                                <SectionEyebrow className="mb-4">Scope of Work</SectionEyebrow>
-                                <p className="font-sans text-[16px] text-text-secondary leading-relaxed mb-6">
-                                    {selectedProject.scope}. This comprehensive installation involved careful planning, bespoke system design, and rigorous testing to align with the client's high standards.
-                                </p>
-                                <p className="font-sans italic text-[16px] text-text-primary border-l-2 border-accent pl-4 py-2">
-                                    "Delivered a seamless integration resulting in robust operations and long-term reliability for {selectedProject.client}."
-                                </p>
-                            </div>
-
-                            <div className="w-full md:w-1/3">
-                                <div className="bg-dark-surface/5 rounded-2xl p-6 border border-border-soft font-mono text-[13px] text-text-primary">
-                                    <table className="w-full">
-                                        <tbody>
-                                            <tr><td className="py-3 text-text-muted w-1/3">Client</td><td className="py-3 font-medium">{selectedProject.client}</td></tr>
-                                            <tr className="border-t border-border-soft/50"><td className="py-3 text-text-muted">Sector</td><td className="py-3 font-medium">
-                                                <span className="bg-accent/10 text-accent px-2 py-1 rounded font-sans font-bold uppercase text-[10px] tracking-wider">{selectedProject.category}</span>
-                                            </td></tr>
-                                            <tr className="border-t border-border-soft/50"><td className="py-3 text-text-muted">Solutions</td><td className="py-3 font-medium">{selectedProject.scope}</td></tr>
-                                            <tr className="border-t border-border-soft/50"><td className="py-3 text-text-muted">Year</td><td className="py-3 font-medium">2023</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </GlassModal>
+            <ProjectModal
+                selectedProject={selectedProject}
+                onClose={() => setSelectedProject(null)}
+            />
         </div>
     );
 };

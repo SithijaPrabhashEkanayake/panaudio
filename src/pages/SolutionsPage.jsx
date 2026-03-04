@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Speaker, MonitorPlay, Video, Home, Network, Shield, Database, Zap, Thermometer, Cable, Monitor } from 'lucide-react';
 import VideoHero from '../components/ui/VideoHero';
 import SectionEyebrow from '../components/ui/SectionEyebrow';
 import CategoryPills from '../components/ui/CategoryPills';
 import ProductCard from '../components/ui/ProductCard';
+import ProductModal from '../components/ui/ProductModal';
 import Button from '../components/ui/Button';
-import { products } from '../data/products';
 import { solutions } from '../data/solutions';
 
 const iconMap = {
@@ -25,6 +25,23 @@ const iconMap = {
 
 const SolutionsPage = () => {
     const [activeCategory, setActiveCategory] = useState('All');
+    const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const res = await fetch('http://localhost:5000/api/products');
+                if (res.ok) {
+                    const data = await res.json();
+                    setProducts(data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch products:", err);
+            }
+        };
+        fetchProducts();
+    }, []);
 
     const categories = ['All', ...solutions.map(s => s.name)];
 
@@ -115,25 +132,35 @@ const SolutionsPage = () => {
 
                                     {/* Product Grid Column */}
                                     <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                                        {categoryProducts.length > 0 ? (
-                                            categoryProducts.map(prod => (
-                                                <div key={prod.id} className="h-full">
-                                                    <ProductCard {...prod} />
-                                                </div>
-                                            ))
-                                        ) : (
-                                            // Fallback placeholders if no products matches
-                                            [1, 2, 3].map(i => (
-                                                <div key={i} className="h-full">
-                                                    <ProductCard
-                                                        name={`${sol.name} Demo ${i}`}
-                                                        category={sol.name}
-                                                        description="Premium technology designed for integration."
-                                                        image={`https://placehold.co/600x400/E8471C/FFFFFF?text=Demo`}
-                                                    />
-                                                </div>
-                                            ))
-                                        )}
+                                        <AnimatePresence>
+                                            {categoryProducts.length > 0 ? (
+                                                categoryProducts.map(prod => (
+                                                    <motion.div
+                                                        key={prod.id}
+                                                        layout
+                                                        initial={{ opacity: 0, scale: 0.9 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        exit={{ opacity: 0, scale: 0.9 }}
+                                                        transition={{ duration: 0.3 }}
+                                                        className="h-full"
+                                                    >
+                                                        <ProductCard {...prod} onClick={() => setSelectedProduct(prod)} />
+                                                    </motion.div>
+                                                ))
+                                            ) : (
+                                                // Fallback placeholders if no products matches
+                                                [1, 2, 3].map(i => (
+                                                    <div key={i} className="h-full">
+                                                        <ProductCard
+                                                            name={`${sol.name} Demo ${i}`}
+                                                            category={sol.name}
+                                                            description="Premium technology designed for integration."
+                                                            image={`https://placehold.co/600x400/E8471C/FFFFFF?text=Demo`}
+                                                        />
+                                                    </div>
+                                                ))
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 </div>
                             </div>
@@ -141,6 +168,11 @@ const SolutionsPage = () => {
                     );
                 })}
             </div>
+
+            <ProductModal
+                selectedProduct={selectedProduct}
+                onClose={() => setSelectedProduct(null)}
+            />
         </div>
     );
 };
