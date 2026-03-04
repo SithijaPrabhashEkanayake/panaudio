@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { API_URL } from '../../config';
 
 const ProductCard = ({ id, image, brand, brandLogo, category, name, description, price, onClick }) => {
     return (
@@ -13,7 +14,7 @@ const ProductCard = ({ id, image, brand, brandLogo, category, name, description,
             <div className="relative aspect-[16/10] overflow-hidden bg-bg-base">
                 <motion.img
                     layoutId={`product-image-${id}`}
-                    src={image ? `http://localhost:5000${image}` : `https://placehold.co/800x500/E8471C/FFFFFF?text=${encodeURIComponent(name || 'Product')}`}
+                    src={image ? `${API_URL}${image}` : `https://placehold.co/800x500/E8471C/FFFFFF?text=${encodeURIComponent(name || 'Product')}`}
                     alt={name}
                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     loading="lazy"

@@ -6,6 +6,7 @@ import CategoryPills from '../components/ui/CategoryPills';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ui/ProjectModal';
 import TestimonialCard from '../components/ui/TestimonialCard';
+import { API_URL } from '../config';
 
 const ProjectsPage = () => {
     const [projects, setProjects] = useState([]);
@@ -15,7 +16,7 @@ const ProjectsPage = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/projects');
+                const res = await fetch(`${API_URL}/api/projects`);
                 if (res.ok) {
                     const data = await res.json();
                     setProjects(data);

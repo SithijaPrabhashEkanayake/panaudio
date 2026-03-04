@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import SectionEyebrow from './SectionEyebrow';
+import { API_URL } from '../../config';
 
 const ProjectModal = ({ selectedProject, onClose }) => {
     if (!selectedProject) return null;
@@ -39,7 +40,7 @@ const ProjectModal = ({ selectedProject, onClose }) => {
                             <div className="w-full aspect-video max-h-[40vh] rounded-2xl overflow-hidden shadow-3 relative shrink-0">
                                 <motion.img
                                     layoutId={`project-image-${selectedProject.id}`}
-                                    src={selectedProject.image ? `http://localhost:5000${selectedProject.image}` : `https://picsum.photos/1200/600?random=${Math.floor(Math.random() * 1000)}`}
+                                    src={selectedProject.image ? `${API_URL}${selectedProject.image}` : `https://picsum.photos/1200/600?random=${Math.floor(Math.random() * 1000)}`}
                                     alt={selectedProject.name}
                                     className="w-full h-full object-cover"
                                 />

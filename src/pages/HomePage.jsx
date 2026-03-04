@@ -12,6 +12,7 @@ import ProductModal from '../components/ui/ProductModal';
 import ProjectCard from '../components/ui/ProjectCard';
 import { cardStagger, cardItem } from '../animations/variants';
 import { partners } from '../data/partners';
+import { API_URL } from '../config';
 
 const HomePage = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -23,8 +24,8 @@ const HomePage = () => {
         const fetchData = async () => {
             try {
                 const [productsRes, projectsRes] = await Promise.all([
-                    fetch('http://localhost:5000/api/products'),
-                    fetch('http://localhost:5000/api/projects')
+                    fetch(`${API_URL}/api/products`),
+                    fetch(`${API_URL}/api/projects`)
                 ]);
 
                 if (productsRes.ok) {

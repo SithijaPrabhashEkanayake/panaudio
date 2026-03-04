@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "vite build",

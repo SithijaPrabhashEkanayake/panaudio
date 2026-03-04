@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { API_URL } from '../../config';
 
 const ProjectCard = ({ id, image, projectName, client, category, scope, onClick }) => {
 
@@ -22,7 +23,7 @@ const ProjectCard = ({ id, image, projectName, client, category, scope, onClick 
             <div className="relative aspect-[16/10] overflow-hidden bg-bg-base">
                 <motion.img
                     layoutId={`project-image-${id}`}
-                    src={image ? `http://localhost:5000${image}` : `https://picsum.photos/800/500?random=${Math.floor(Math.random() * 1000)}`}
+                    src={image ? `${API_URL}${image}` : `https://picsum.photos/800/500?random=${Math.floor(Math.random() * 1000)}`}
                     alt={projectName}
                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     loading="lazy"

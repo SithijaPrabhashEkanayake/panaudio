@@ -8,6 +8,7 @@ import ProductModal from '../components/ui/ProductModal';
 import GlassModal from '../components/ui/GlassModal';
 import { brands } from '../data/brands';
 import { solutions } from '../data/solutions';
+import { API_URL } from '../config';
 
 const ProductsPage = () => {
     const [products, setProducts] = useState([]);
@@ -21,7 +22,7 @@ const ProductsPage = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/products');
+                const res = await fetch(`${API_URL}/api/products`);
                 if (res.ok) {
                     const data = await res.json();
                     setProducts(data);

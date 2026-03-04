@@ -8,6 +8,7 @@ import ProductCard from '../components/ui/ProductCard';
 import ProductModal from '../components/ui/ProductModal';
 import Button from '../components/ui/Button';
 import { solutions } from '../data/solutions';
+import { API_URL } from '../config';
 
 const iconMap = {
     Speaker: Speaker,
@@ -31,7 +32,7 @@ const SolutionsPage = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/products');
+                const res = await fetch(`${API_URL}/api/products`);
                 if (res.ok) {
                     const data = await res.json();
                     setProducts(data);

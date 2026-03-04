@@ -3,9 +3,10 @@ import { Plus, Edit2, Trash2, ShieldCheck, ServerCrash, Package, FolderGit2 } fr
 import Button from '../components/ui/Button';
 import ProductFormModal from '../components/admin/ProductFormModal';
 import ProjectFormModal from '../components/admin/ProjectFormModal';
+import { API_URL } from '../config';
 
-const PRODUCTS_API = 'http://localhost:5000/api/products';
-const PROJECTS_API = 'http://localhost:5000/api/projects';
+const PRODUCTS_API = `${API_URL}/api/products`;
+const PROJECTS_API = `${API_URL}/api/projects`;
 
 const AdminPage = () => {
     const [activeTab, setActiveTab] = useState('products');
@@ -196,7 +197,7 @@ const AdminPage = () => {
                                                 <div className="flex items-center gap-4">
                                                     <div className="w-12 h-12 rounded-lg bg-bg-base overflow-hidden shrink-0 border border-border-soft flex items-center justify-center">
                                                         {item.image ? (
-                                                            <img src={`http://localhost:5000${item.image}`} alt={item.name} className="w-full h-full object-cover" />
+                                                            <img src={`${API_URL}${item.image}`} alt={item.name} className="w-full h-full object-cover" />
                                                         ) : (
                                                             <span className="text-xs text-text-muted font-medium">No Img</span>
                                                         )}

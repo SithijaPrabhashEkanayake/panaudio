@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Upload } from 'lucide-react';
 import Button from '../ui/Button';
+import { API_URL } from '../../config';
 
 const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
     const fileInputRef = useRef(null);
@@ -19,7 +20,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
     useEffect(() => {
         if (initialData) {
             setFormData(initialData);
-            setImagePreview(initialData.image ? `http://localhost:5000${initialData.image}` : null);
+            setImagePreview(initialData.image ? `${API_URL}${initialData.image}` : null);
         } else {
             setFormData({
                 name: '',

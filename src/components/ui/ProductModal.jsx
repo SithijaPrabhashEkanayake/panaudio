@@ -2,6 +2,7 @@ import React from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, X } from 'lucide-react';
+import { API_URL } from '../../config';
 
 const ProductModal = ({ selectedProduct, onClose }) => {
     if (!selectedProduct) return null;
@@ -41,7 +42,7 @@ const ProductModal = ({ selectedProduct, onClose }) => {
                                     <div className="aspect-video md:aspect-square lg:aspect-[4/3] max-h-[40vh] md:max-h-[60vh] h-full rounded-2xl overflow-hidden bg-bg-base relative shadow-3">
                                         <motion.img
                                             layoutId={`product-image-${selectedProduct.id}`}
-                                            src={selectedProduct.image ? `http://localhost:5000${selectedProduct.image}` : `https://placehold.co/800x600/E8471C/FFFFFF?text=${encodeURIComponent(selectedProduct.name || 'Product')}`}
+                                            src={selectedProduct.image ? `${API_URL}${selectedProduct.image}` : `https://placehold.co/800x600/E8471C/FFFFFF?text=${encodeURIComponent(selectedProduct.name || 'Product')}`}
                                             alt={selectedProduct.name}
                                             className="w-full h-full object-cover md:object-contain"
                                         />
