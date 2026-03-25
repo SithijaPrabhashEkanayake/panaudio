@@ -49,6 +49,7 @@ const ProductsPage = () => {
             if (e.key === 'Escape') setSelectedProduct(null);
         };
         if (selectedProduct) {
+            np
             document.addEventListener('keydown', handleEsc);
             document.body.style.overflow = 'hidden';
         }

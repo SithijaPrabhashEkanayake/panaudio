@@ -10,6 +10,7 @@ import GlassPanel from '../components/ui/GlassPanel';
 import ProductCard from '../components/ui/ProductCard';
 import ProductModal from '../components/ui/ProductModal';
 import ProjectCard from '../components/ui/ProjectCard';
+import ProjectModal from '../components/ui/ProjectModal';
 import { cardStagger, cardItem } from '../animations/variants';
 import { partners } from '../data/partners';
 import { API_URL } from '../config';
@@ -18,6 +19,7 @@ const HomePage = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
     const [featuredProjects, setFeaturedProjects] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [selectedProject, setSelectedProject] = useState(null);
     const h1Text = "Sound. Vision. Connection.".split(' ');
 
     useEffect(() => {
@@ -55,7 +57,7 @@ const HomePage = () => {
             >
                 <div className="container mx-auto px-6 max-w-7xl flex flex-col items-center justify-center text-center">
                     <div className="glass-light p-6 md:p-10 lg:p-12 mb-8 mt-16 md:mt-24 rounded-[2.5rem] max-w-[850px] w-full" style={{ backgroundColor: 'rgba(247,247,245,0.10)' }}>
-                        <SectionEyebrow className="hero-eyebrow justify-center mb-5 text-white border-white scale-90 origin-center">
+                        <SectionEyebrow className="hero-eyebrow justify-center mb-5 text-white border-white scale-90 origin-center" hideDash>
                             <span className="text-white tracking-[0.15em] text-xs md:text-sm">SRI LANKA'S TECHNOLOGY INTEGRATION LEADER</span>
                         </SectionEyebrow>
 
@@ -216,7 +218,7 @@ const HomePage = () => {
                 >
                     {featuredProjects.map((proj) => (
                         <motion.div key={proj.id} variants={cardItem} className="h-full">
-                            <ProjectCard {...proj} projectName={proj.name} />
+                            <ProjectCard {...proj} projectName={proj.name} onClick={() => setSelectedProject(proj)} />
                         </motion.div>
                     ))}
                 </motion.div>
@@ -238,6 +240,11 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
+
+            <ProjectModal
+                selectedProject={selectedProject}
+                onClose={() => setSelectedProject(null)}
+            />
         </div>
     );
 };

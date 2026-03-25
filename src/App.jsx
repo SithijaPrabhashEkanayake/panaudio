@@ -13,6 +13,8 @@ import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 
 import AdminPage from './pages/AdminPage';
+import AdminLogin from './pages/AdminLogin';
+import ProtectedRoute from './components/ui/ProtectedRoute';
 
 // ScrollToTop
 const ScrollToTop = () => {
@@ -48,7 +50,8 @@ function AnimatedRoutes() {
                     <Route path="projects" element={<PageWrapper><ProjectsPage /></PageWrapper>} />
                     <Route path="services" element={<PageWrapper><ServicesPage /></PageWrapper>} />
                     <Route path="contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
-                    <Route path="admin" element={<PageWrapper><AdminPage /></PageWrapper>} />
+                    <Route path="pan-sys-portal/login" element={<PageWrapper><AdminLogin /></PageWrapper>} />
+                    <Route path="pan-sys-portal" element={<ProtectedRoute><PageWrapper><AdminPage /></PageWrapper></ProtectedRoute>} />
                 </Route>
             </Routes>
         </AnimatePresence>

@@ -4,7 +4,7 @@ export const solutions = [
         name: 'Audio Visual Solutions',
         iconName: 'Speaker',
         description: 'Comprehensive audio visual solutions including PA systems, digitally steerable speakers, line arrays, and conferencing tools.',
-        categories: ['PA Systems', 'Digitally Steerable Speakers', 'Professional Speakers', 'Amplifiers', 'Pro Mixers', 'Audio Processors', 'Conferencing Systems', 'Auditorium/Line Array Speakers', 'Megaphone Solutions']
+        categories: ['PA Systems', 'Digitally Steerable Speakers', 'Professional Speakers', 'Amplifiers', 'Pro Mixers', 'Audio Processors', 'Conferencing Systems', 'Auditorium/Line Array Speakers', 'Megaphone Solutions', 'JBL Professional Series', 'Sound Bars', 'Subwoofers']
     },
     {
         id: 'sol-video',
@@ -18,21 +18,21 @@ export const solutions = [
         name: 'Video Conference System',
         iconName: 'Video',
         description: 'Professional video conferencing systems from leading brands for meeting rooms of all sizes.',
-        categories: ['DSPPA Web Cameras', 'Logitech GROUP', 'Polycom', 'Yealink', 'Yealink All-in-One Panel']
+        categories: ['Logitech GROUP', 'Polycom', 'Yealink', 'Yealink All-in-One Panel', 'Smart Boards']
     },
     {
-        id: 'sol-comp',
-        name: 'Computer',
+        id: 'sol-ds',
+        name: 'Digital Signages',
         iconName: 'Monitor',
-        description: 'High-performance computers, laptops, and accessories for professional and personal use.',
-        categories: ['Desktop Computers', 'Laptops', 'Computer Accessories', 'Software']
+        description: 'Dynamic digital signage solutions for advertising, information display, and interactive experiences.',
+        categories: ['Indoor Digital Signages', 'Outdoor Digital Signages', 'Interactive Kiosk Displays']
     },
     {
         id: 'sol-net',
         name: 'Networking',
         iconName: 'Network',
         description: 'Robust network infrastructure solutions: LAN, switches, firewalls, servers, and cabling.',
-        categories: ['LAN Solutions', 'Huawei Wi-Fi Access Points', 'Huawei Network Switches', 'Firewalls', 'Servers', 'Fiber Structured Cabling', 'Network Racks', 'Cable Trays']
+        categories: ['LAN Solutions', 'Huawei Wi-Fi Access Points', 'Huawei Network Switches', 'Firewalls', 'Servers', 'Fiber Structured Cabling', 'Network Racks', 'Cable Trays', 'Beam Sensors']
     },
     {
         id: 'sol-sec',

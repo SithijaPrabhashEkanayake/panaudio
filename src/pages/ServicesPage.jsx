@@ -153,7 +153,7 @@ const ServicesPage = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                             <Button onClick={() => window.location.href = '/contact'} variant="primary" size="lg">Request Service <ArrowRight className="w-5 h-5 ml-2" /></Button>
-                            <Button onClick={() => window.open('https://wa.me/94711616564', '_blank')} variant="secondary" size="lg" icon={MessageCircle}>WhatsApp Us</Button>
+                            <Button onClick={() => window.open('https://wa.me/94711616564', '_blank')} className="!bg-[#25D366] !text-white !border-transparent hover:!bg-[#20BD5A] shadow-md transition-colors" size="lg" icon={MessageCircle}>WhatsApp Us</Button>
                         </div>
                     </GlassPanel>
                 </div>

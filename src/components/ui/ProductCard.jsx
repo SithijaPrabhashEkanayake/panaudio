@@ -11,12 +11,12 @@ const ProductCard = ({ id, image, brand, brandLogo, category, name, description,
             className="group bg-white rounded-xl overflow-hidden shadow-1 hover:shadow-4 hover:-translate-y-[6px] transition-all duration-300 cursor-pointer border border-border-soft flex flex-col h-full"
         >
             {/* Image Area */}
-            <div className="relative aspect-[16/10] overflow-hidden bg-bg-base">
+            <div className="relative aspect-[16/10] overflow-hidden bg-bg-base p-4">
                 <motion.img
                     layoutId={`product-image-${id}`}
                     src={image ? `${API_URL}${image}` : `https://placehold.co/800x500/E8471C/FFFFFF?text=${encodeURIComponent(name || 'Product')}`}
                     alt={name}
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     loading="lazy"
                 />
                 {/* Brand Badge */}

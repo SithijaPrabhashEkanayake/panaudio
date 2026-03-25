@@ -47,8 +47,10 @@ const VideoHero = ({ videoSrc, posterSrc, overlayOpacity = 0.70, children }) => 
                 loop
                 playsInline
                 poster={posterSrc}
+                aria-label="Hero video background"
             >
                 <source src={videoSrc} type={videoSrc?.endsWith('.webm') ? "video/webm" : "video/mp4"} />
+                <track kind="captions" src="" label="English captions" default hidden />
             </video>
             <div
                 className="absolute inset-0 z-10 pointer-events-none"

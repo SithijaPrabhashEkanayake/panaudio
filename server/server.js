@@ -27,8 +27,47 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-app.use(cors());
+// CORS configuration - supports both development and production
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    process.env.FRONTEND_URL,
+    /\.vercel\.app$/,  // All Vercel deployments
+].filter(Boolean);
+
+app.use(cors({
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl)
+        if (!origin) return callback(null, true);
+        
+        // Check if origin is allowed
+        const isAllowed = allowedOrigins.some(allowed => {
+            if (typeof allowed === 'string') return allowed === origin;
+            if (allowed instanceof RegExp) return allowed.test(origin);
+            return false;
+        });
+        
+        if (isAllowed) {
+            callback(null, true);
+        } else {
+            console.warn(`CORS blocked origin: ${origin}`);
+            callback(null, true); // Allow for now, restrict in production
+        }
+    },
+    credentials: true
+}));
+
 app.use(express.json());
+
+// Security headers middleware
+app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('X-XSS-Protection', '1; mode=block');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    next();
+});
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve images statically
 
 // Helper function to read data
@@ -224,6 +263,25 @@ app.delete('/api/projects/:id', (req, res) => {
     }
 });
 
+// --- ADMIN AUTHENTICATION ---
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+    
+    // Use environment variables for credentials
+    const ADMIN_USER = process.env.ADMIN_USERNAME || 'admin';
+    const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'PanAudio@2024';
+
+    if (username === ADMIN_USER && password === ADMIN_PASS) {
+        res.json({ success: true, token: 'pan-secure-session-token-98f6d' });
+    } else {
+        res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
+});
+
 app.listen(PORT, () => {
-    console.log(`Backend server running on http://localhost:${PORT}`);
+    console.log(`🚀 Pan Audio Backend Server`);
+    console.log(`📡 Server running on http://localhost:${PORT}`);
+    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🔒 CORS enabled for: ${allowedOrigins.filter(o => typeof o === 'string').join(', ')}`);
+    console.log(`📁 Serving uploads from: ${path.join(__dirname, 'uploads')}`);
 });

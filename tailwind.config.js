@@ -34,6 +34,33 @@ export default {
                 sora: ['Sora', 'sans-serif'],
                 sans: ['DM Sans', 'sans-serif'],
                 mono: ['JetBrains Mono', 'monospace'],
+                serif: ['IBM Plex Serif', 'serif'],
+            },
+            colorPalette: {
+                black: {
+                    bg: '#000000',
+                    surface: '#0A0A0A',
+                    text: '#FFFFFF',
+                    accent: '#FF6B35'
+                },
+                ivory: {
+                    bg: '#FFFFF0',
+                    surface: '#F5F5DC',
+                    text: '#2C2C2C',
+                    accent: '#B8860B'
+                },
+                grey: {
+                    bg: '#2D2D2D',
+                    surface: '#404040',
+                    text: '#E5E5E5',
+                    accent: '#E8471C'
+                },
+                blue: {
+                    bg: '#0A1929',
+                    surface: '#112240',
+                    text: '#CCD6F6',
+                    accent: '#64FFDA'
+                }
             },
             borderRadius: {
                 'xs': '8px',

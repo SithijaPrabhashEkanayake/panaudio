@@ -19,22 +19,39 @@ const ContactPage = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        setTimeout(() => {
+        
+        try {
+            const response = await fetch('https://formspree.io/f/xvzwyoan', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                setSuccess(true);
+                setFormData({ name: '', phone: '', email: '', country: '', type: 'Audio Visual Solutions', message: '' });
+            } else {
+                alert("There was a problem sending your message. Please verify your connection and try again.");
+            }
+        } catch (error) {
+            console.error("Formspree Error:", error);
+            alert("There was a problem sending your message. Please try again.");
+        } finally {
             setIsSubmitting(false);
-            setSuccess(true);
-            setFormData({ name: '', phone: '', email: '', country: '', type: 'Audio Visual Solutions', message: '' });
-        }, 1500);
+        }
     };
 
     return (
         <div className="flex flex-col w-full bg-bg-base min-h-screen">
             {/* SECTION 1 — Contact Header */}
             <VideoHero
-                videoSrc="/about-us-hero.webm"
+                videoSrc="/contact-us-hero.webm"
                 posterSrc="https://placehold.co/1920x1080/131110/FFFFFF?text=Contact"
             >
                 <div className="container mx-auto px-6 max-w-7xl flex flex-col items-center justify-center text-center">
@@ -75,9 +92,13 @@ const ContactPage = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex gap-4 items-center">
-                                    <Mail className="w-6 h-6 text-accent flex-shrink-0" strokeWidth={1.5} />
-                                    <a href="mailto:info@panaudio.com" className="hover:text-accent font-medium transition-colors">info@panaudio.com</a>
+                                <div className="flex gap-4 items-start">
+                                    <Mail className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                                    <div className="flex flex-col gap-1">
+                                        <a href="mailto:info@panaudio.com" className="hover:text-accent font-medium transition-colors">info@panaudio.com</a>
+                                        <a href="mailto:sales@panaudio.com" className="hover:text-accent font-medium transition-colors">sales@panaudio.com</a>
+                                        <a href="mailto:avd@panaudio.com" className="hover:text-accent font-medium transition-colors">avd@panaudio.com</a>
+                                    </div>
                                 </div>
 
                                 <div className="flex gap-4 items-center">
@@ -87,7 +108,7 @@ const ContactPage = () => {
                             </div>
 
                             <div className="mt-auto pt-4 border-t border-border-soft">
-                                <Button variant="secondary" fullWidth icon={MessageCircle} onClick={() => window.open('https://wa.me/94711616564', '_blank')}>
+                                <Button className="!bg-[#25D366] !text-white !border-transparent hover:!bg-[#20BD5A] shadow-md transition-colors" fullWidth icon={MessageCircle} onClick={() => window.open('https://wa.me/94711616564', '_blank')}>
                                     WhatsApp Us
                                 </Button>
                             </div>
@@ -102,7 +123,7 @@ const ContactPage = () => {
                                 style={{ border: 0 }}
                                 allowFullScreen=""
                                 loading="lazy"
-                                className="grayscale hover:grayscale-0 transition-all duration-700"
+                                className="w-full h-full"
                             />
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ variant = 'primary', size = 'md', icon: Icon, className = '', children, onClick, ...props }) => {
+const Button = ({ variant = 'primary', size = 'md', icon: Icon, className = '', children, onClick, fullWidth, ...props }) => {
     const baseClasses = 'inline-flex items-center justify-center font-sans font-semibold transition-all duration-300 focus:outline-none';
 
     const sizeClasses = {
@@ -15,9 +15,11 @@ const Button = ({ variant = 'primary', size = 'md', icon: Icon, className = '', 
         ghost: 'bg-transparent border border-accent text-accent rounded-pill hover:bg-accent/10',
     };
 
+    const widthClass = fullWidth ? 'w-full' : '';
+
     return (
         <button
-            className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+            className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${widthClass} ${className}`}
             onClick={onClick}
             {...props}
         >

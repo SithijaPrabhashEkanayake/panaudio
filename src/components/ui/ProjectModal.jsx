@@ -83,6 +83,49 @@ const ProjectModal = ({ selectedProject, onClose }) => {
                                     </div>
                                 </div>
                             </motion.div>
+
+                            {/* Sub Projects Table View */}
+                            {selectedProject.subProjects && selectedProject.subProjects.length > 0 && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.2 }}
+                                    className="w-full shrink-0 border-t border-border-soft pt-8 pb-4"
+                                >
+                                    <SectionEyebrow className="mb-6">Projects Completed at Location</SectionEyebrow>
+                                    <div className="bg-white/50 border border-border-soft rounded-2xl overflow-hidden glass-light">
+                                        <div className="overflow-x-auto">
+                                            <table className="w-full text-left border-collapse">
+                                                <thead>
+                                                    <tr className="bg-bg-pure/60 border-b border-border-soft">
+                                                        <th className="font-sans font-semibold text-[13px] text-text-secondary uppercase tracking-wider py-4 px-6 min-w-[200px]">Project Name</th>
+                                                        <th className="font-sans font-semibold text-[13px] text-text-secondary uppercase tracking-wider py-4 px-6 min-w-[150px]">System / Solution</th>
+                                                        <th className="font-sans font-semibold text-[13px] text-text-secondary uppercase tracking-wider py-4 px-6 min-w-[100px]">Year</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="divide-y divide-border-soft/50">
+                                                    {selectedProject.subProjects.map((sub, idx) => (
+                                                        <tr key={idx} className="hover:bg-white/40 transition-colors">
+                                                            <td className="py-4 px-6 font-semibold text-[15px] text-text-primary whitespace-normal">
+                                                                {sub.name}
+                                                            </td>
+                                                            <td className="py-4 px-6">
+                                                                <span className="inline-flex items-center px-2.5 py-1 rounded bg-accent/10 text-accent font-sans font-medium text-[12px]">
+                                                                    {sub.system}
+                                                                </span>
+                                                            </td>
+                                                            <td className="py-4 px-6 font-mono text-[14px] text-text-muted">
+                                                                {sub.year || '2023'}
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
                         </motion.div>
                     </div>
                 )}

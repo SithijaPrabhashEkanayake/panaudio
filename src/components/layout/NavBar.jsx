@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../ui/Button';
 import useScrollPosition from '../../hooks/useScrollPosition';
 
 const navLinks = [
@@ -11,7 +10,8 @@ const navLinks = [
     { name: 'Solutions', path: '/solutions' },
     { name: 'Products', path: '/products' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Services', path: '/services' }
+    { name: 'Services', path: '/services' },
+    { name: 'Contact Us', path: '/contact' }
 ];
 
 const NavBar = () => {
@@ -28,13 +28,13 @@ const NavBar = () => {
                 className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'glass-nav py-4' : 'bg-transparent py-6'
                     }`}
             >
-                <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
+                <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between relative">
                     <Link to="/" className="z-50 relative">
-                        <img src="/logo.png" alt="Pan Audio Logo" className="h-[44px] object-contain" />
+                        <img src="/logo.png" alt="Pan Audio Logo" width={216} height={64} className="h-[64px] object-contain" />
                     </Link>
 
                     {/* Desktop Links */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                         {navLinks.map((link) => {
                             const isActive = location.pathname === link.path;
                             return (
@@ -51,16 +51,12 @@ const NavBar = () => {
                         })}
                     </div>
 
-                    <div className="hidden md:block">
-                        <Link to="/contact">
-                            <Button variant="primary">Get in Touch</Button>
-                        </Link>
-                    </div>
-
                     {/* Mobile Toggle */}
                     <button
                         className="md:hidden relative z-50 p-2 text-text-primary focus:outline-none"
                         onClick={() => setIsOpen(!isOpen)}
+                        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={isOpen}
                     >
                         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
@@ -93,11 +89,6 @@ const NavBar = () => {
                                     </Link>
                                 </motion.div>
                             ))}
-                            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: navLinks.length * 0.1 }}>
-                                <Link to="/contact" onClick={() => setIsOpen(false)}>
-                                    <Button variant="primary" size="lg">Get in Touch</Button>
-                                </Link>
-                            </motion.div>
                         </div>
                     </motion.div>
                 )}
