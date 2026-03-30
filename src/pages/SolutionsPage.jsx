@@ -59,7 +59,7 @@ const SolutionsPage = () => {
     };
 
     return (
-        <div className="flex flex-col w-full bg-bg-base">
+        <div className="flex flex-col w-full" style={{ backgroundColor: '#FFFFE3' }}>
             {/* SECTION 1 — Solutions Hero */}
             <VideoHero
                 videoSrc="/solutions-hero.webm"

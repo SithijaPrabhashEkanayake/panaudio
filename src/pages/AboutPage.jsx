@@ -120,7 +120,7 @@ const AboutPage = () => {
     });
 
     return (
-        <div ref={containerRef} className="flex flex-col w-full bg-bg-base">
+        <div ref={containerRef} className="flex flex-col w-full" style={{ backgroundColor: '#FFFFE3' }}>
             <VideoHero
                 videoSrc="/about-us-hero.webm"
                 posterSrc="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
@@ -187,8 +187,8 @@ const AboutPage = () => {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <GlassPanel variant="light" className="flex flex-col md:flex-row overflow-hidden border border-border-soft/50 rounded-3xl p-0">
                         <div className="w-full md:w-[45%] h-[400px] md:h-auto p-4 md:p-8">
-                            <img
-                                src="/team/sebastian.png"
+<img
+                                src="/team/sebastiyan.png"
                                 alt="Mr. Sebastian Karunakaran, Managing Director"
                                 width={450}
                                 height={500}

@@ -9,37 +9,25 @@ import AnimatedCounter from '../components/ui/AnimatedCounter';
 import GlassPanel from '../components/ui/GlassPanel';
 import ProductCard from '../components/ui/ProductCard';
 import ProductModal from '../components/ui/ProductModal';
-import ProjectCard from '../components/ui/ProjectCard';
-import ProjectModal from '../components/ui/ProjectModal';
+
 import { cardStagger, cardItem } from '../animations/variants';
 import { partners } from '../data/partners';
 import { API_URL } from '../config';
 
 const HomePage = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
-    const [featuredProjects, setFeaturedProjects] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [selectedProject, setSelectedProject] = useState(null);
+    
     const h1Text = "Sound. Vision. Connection.".split(' ');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [productsRes, projectsRes] = await Promise.all([
-                    fetch(`${API_URL}/api/products`),
-                    fetch(`${API_URL}/api/projects`)
-                ]);
+                const productsRes = await fetch(`${API_URL}/api/products`);
 
                 if (productsRes.ok) {
                     const data = await productsRes.json();
                     setFeaturedProducts(data.filter(p => p.featured).slice(0, 6));
-                }
-
-                if (projectsRes.ok) {
-                    const data = await projectsRes.json();
-                    const featured = data.filter(p => p.featured);
-                    // Use featured projects if they exist, otherwise fallback to the most recent ones
-                    setFeaturedProjects(featured.length > 0 ? featured.slice(0, 3) : data.slice(0, 3));
                 }
             } catch (err) {
                 console.error("Failed to fetch featured data:", err);
@@ -49,7 +37,7 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full" style={{ backgroundColor: '#FFFFE3' }}>
             {/* SECTION 1 — Hero */}
             <VideoHero
                 videoSrc="/homepage-hero.webm"
@@ -197,35 +185,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            {/* SECTION 6 — Project Highlights Teaser */}
-            <section className="py-24 container mx-auto px-6 max-w-7xl">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                    <div className="flex flex-col items-start">
-                        <SectionEyebrow className="mb-4">PROJECT HIGHLIGHTS</SectionEyebrow>
-                        <h2 className="font-sora font-semibold text-3xl md:text-5xl text-text-primary">Delivering Excellence<br />Across Sectors</h2>
-                    </div>
-                    <Link to="/projects">
-                        <Button variant="secondary">View All Projects <ArrowRight className="w-4 h-4 ml-2" /></Button>
-                    </Link>
-                </div>
-
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
-                    variants={cardStagger}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
-                    {featuredProjects.map((proj) => (
-                        <motion.div key={proj.id} variants={cardItem} className="h-full">
-                            <ProjectCard {...proj} projectName={proj.name} onClick={() => setSelectedProject(proj)} />
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </section>
-
-
-            {/* SECTION 8 — Client Logos Strip */}
+            {/* SECTION 6 — Client Logos Strip */}
             <section className="py-16 overflow-hidden">
                 <div className="container mx-auto px-6 max-w-7xl mb-8 text-center flex justify-center">
                     <SectionEyebrow className="mb-4">OUR CLIENTS</SectionEyebrow>
@@ -241,10 +201,7 @@ const HomePage = () => {
                 </div>
             </section>
 
-            <ProjectModal
-                selectedProject={selectedProject}
-                onClose={() => setSelectedProject(null)}
-            />
+
         </div>
     );
 };

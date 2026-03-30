@@ -52,7 +52,7 @@ const ServicesPage = () => {
     });
 
     return (
-        <div ref={containerRef} className="flex flex-col w-full bg-bg-base">
+        <div ref={containerRef} className="flex flex-col w-full" style={{ backgroundColor: '#FFFFE3' }}>
             {/* SECTION 1 — Services Hero */}
             <VideoHero
                 videoSrc="/service-hero.webm"

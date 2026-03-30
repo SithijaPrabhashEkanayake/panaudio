@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Upload } from 'lucide-react';
 import Button from '../ui/Button';
@@ -61,7 +62,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
 
     if (!isOpen) return null;
 
-    return (
+    return createPortal((
         <AnimatePresence>
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm">
                 <motion.div
@@ -200,7 +201,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
                 </motion.div>
             </div>
         </AnimatePresence>
-    );
+    ), document.body);
 };
 
 export default ProductFormModal;

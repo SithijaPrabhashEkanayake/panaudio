@@ -48,7 +48,7 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="flex flex-col w-full bg-bg-base min-h-screen">
+        <div className="flex flex-col w-full min-h-screen" style={{ backgroundColor: '#FFFFE3' }}>
             {/* SECTION 1 — Contact Header */}
             <VideoHero
                 videoSrc="/contact-us-hero.webm"

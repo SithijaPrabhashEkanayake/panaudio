@@ -49,7 +49,6 @@ const ProductsPage = () => {
             if (e.key === 'Escape') setSelectedProduct(null);
         };
         if (selectedProduct) {
-            np
             document.addEventListener('keydown', handleEsc);
             document.body.style.overflow = 'hidden';
         }
@@ -76,7 +75,7 @@ const ProductsPage = () => {
     }, [products, searchTerm, activeBrand, activeCategory]);
 
     return (
-        <div className="flex flex-col w-full bg-bg-base">
+        <div className="flex flex-col w-full" style={{ backgroundColor: '#FFFFE3' }}>
             {/* SECTION 1 — Products Hero */}
             <VideoHero
                 videoSrc="/products-hero.webm"
@@ -120,6 +119,7 @@ const ProductsPage = () => {
                         <div className="relative w-full md:w-[280px] z-40" ref={dropdownRef}>
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                style={activeCategory !== 'All' ? { backgroundColor: 'rgba(231, 71, 28, 0.1)', borderColor: '#E7471C' } : {}}
                                 className="w-full glass-light rounded-pill h-14 border border-border-soft px-6 flex items-center justify-between font-sans text-[15px] text-text-primary outline-none focus:border-accent focus:shadow-accent transition-all duration-300"
                             >
                                 <span className="truncate pr-4 font-medium">
@@ -145,8 +145,9 @@ const ProductsPage = () => {
                                                     setActiveCategory(cat);
                                                     setIsDropdownOpen(false);
                                                 }}
+                                                style={activeCategory === cat ? { backgroundColor: 'rgba(231, 71, 28, 0.1)', color: '#E7471C' } : {}}
                                                 className={`w-full text-left px-6 py-3 font-sans text-[14px] transition-colors duration-200 ${activeCategory === cat
-                                                    ? 'bg-accent/10 text-accent font-semibold'
+                                                    ? 'font-semibold'
                                                     : 'text-text-secondary hover:bg-white/60 hover:text-text-primary'
                                                     }`}
                                             >
@@ -165,8 +166,9 @@ const ProductsPage = () => {
                             <button
                                 key={brand}
                                 onClick={() => setActiveBrand(brand)}
+                                style={activeBrand === brand ? { backgroundColor: '#E7471C', color: 'white', boxShadow: '0 0 15px rgba(231, 71, 28, 0.4)' } : {}}
                                 className={`px-4 py-1.5 rounded-pill font-sans font-medium text-[13px] transition-all duration-300 flex-shrink-0 ${activeBrand === brand
-                                    ? 'bg-text-primary text-white'
+                                    ? ''
                                     : 'glass-light text-text-secondary hover:text-text-primary border border-border-soft'
                                     }`}
                             >
@@ -178,7 +180,7 @@ const ProductsPage = () => {
             </section>
 
             {/* SECTION 3 — Product Grid */}
-            <section className="py-16 container mx-auto px-6 max-w-7xl min-h-[50vh]">
+            <section className="py-16 container mx-auto px-6 max-w-7xl min-h-[50vh]" style={{ background: 'linear-gradient(135deg, #E7471C 0%, #fdcf58 100%)' }}>
                 <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <AnimatePresence>
                         {filteredProducts.map(prod => (
@@ -212,8 +214,12 @@ const ProductsPage = () => {
                     <SectionEyebrow className="mb-12">OUR PRODUCT BRANDS</SectionEyebrow>
                     <div className="flex flex-wrap justify-center gap-12 md:gap-20">
                         {brands.map((b, i) => (
-                            <div key={i} className="text-text-muted font-sora font-bold text-3xl md:text-4xl hover:text-accent transition-colors duration-300 cursor-default grayscale hover:grayscale-0 hover:scale-[1.08] transform">
-                                {b.name}
+                            <div key={i} className="hover:scale-[1.08] transform transition-all duration-300 cursor-default grayscale hover:grayscale-0">
+                                <img 
+                                    src={b.logo} 
+                                    alt={b.name} 
+                                    className="h-10 md:h-12 w-auto object-contain" 
+                                />
                             </div>
                         ))}
                     </div>

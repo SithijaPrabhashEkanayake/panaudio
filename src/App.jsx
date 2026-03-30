@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { pageTransition } from './animations/variants';
+import { ProjectsProvider } from './context/ProjectsContext';
 
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
@@ -60,15 +61,17 @@ function AnimatedRoutes() {
 
 function App() {
     return (
-        <BrowserRouter
-            future={{
-                v7_startTransition: true,
-                v7_relativeSplatPath: true,
-            }}
-        >
-            <ScrollToTop />
-            <AnimatedRoutes />
-        </BrowserRouter>
+        <ProjectsProvider>
+            <BrowserRouter
+                future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true,
+                }}
+            >
+                <ScrollToTop />
+                <AnimatedRoutes />
+            </BrowserRouter>
+        </ProjectsProvider>
     );
 }
 

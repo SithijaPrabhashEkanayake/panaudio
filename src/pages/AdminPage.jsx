@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2, ShieldCheck, ServerCrash, Package, FolderGit2 } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Plus, Edit2, Trash2, ShieldCheck, ServerCrash, Package, FolderGit2, ChevronDown } from 'lucide-react';
 import Button from '../components/ui/Button';
 import ProductFormModal from '../components/admin/ProductFormModal';
 import ProjectFormModal from '../components/admin/ProjectFormModal';
 import { API_URL } from '../config';
+import { sectorColors } from '../data/projects';
+import { useProjects } from '../context/ProjectsContext';
 
 const PRODUCTS_API = `${API_URL}/api/products`;
-const PROJECTS_API = `${API_URL}/api/projects`;
 
 const AdminPage = () => {
     const [activeTab, setActiveTab] = useState('products');
@@ -15,13 +16,39 @@ const AdminPage = () => {
     const [products, setProducts] = useState([]);
     const [loadingProducts, setLoadingProducts] = useState(true);
 
-    // Projects State
-    const [projects, setProjects] = useState([]);
-    const [loadingProjects, setLoadingProjects] = useState(true);
+    // Projects State - using context
+    const { projects, setProjects } = useProjects();
+    const [loadingProjects, setLoadingProjects] = useState(false);
+    const [expandedClient, setExpandedClient] = useState(null);
 
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingItem, setEditingItem] = useState(null);
+
+    // Group projects by client
+    const groupedProjects = useMemo(() => {
+        const groups = {};
+        projects.forEach(project => {
+            if (!groups[project.client]) {
+                groups[project.client] = {
+                    sector: project.sector,
+                    image: project.image || null,
+                    projects: []
+                };
+            }
+            groups[project.client].projects.push({
+                id: project.id,
+                year: project.year,
+                name: project.name
+            });
+        });
+        Object.keys(groups).forEach(client => {
+            groups[client].projects.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+        });
+        return groups;
+    }, [projects]);
+
+    const clients = Object.keys(groupedProjects);
 
     const fetchProducts = async () => {
         try {
@@ -39,25 +66,8 @@ const AdminPage = () => {
         }
     };
 
-    const fetchProjects = async () => {
-        try {
-            setLoadingProjects(true);
-            const res = await fetch(PROJECTS_API);
-            if (!res.ok) throw new Error('Failed to fetch projects');
-            const data = await res.json();
-            setProjects(data);
-            setError(null);
-        } catch (err) {
-            console.error(err);
-            setError("Could not connect to the backend server. Make sure it is running.");
-        } finally {
-            setLoadingProjects(false);
-        }
-    };
-
     useEffect(() => {
         fetchProducts();
-        fetchProjects();
     }, []);
 
     const handleOpenAdd = () => {
@@ -72,54 +82,80 @@ const AdminPage = () => {
 
     const handleDelete = async (id) => {
         const isProduct = activeTab === 'products';
-        const itemName = isProduct ? 'product' : 'project';
-        const url = isProduct ? `${PRODUCTS_API}/${id}` : `${PROJECTS_API}/${id}`;
 
-        if (!window.confirm(`Are you sure you want to delete this ${itemName}?`)) return;
+        if (!window.confirm(`Are you sure you want to delete this ${isProduct ? 'product' : 'project'}?`)) return;
 
-        try {
-            const res = await fetch(url, { method: 'DELETE' });
-            if (!res.ok) throw new Error('Delete failed');
-
-            if (isProduct) {
+        if (isProduct) {
+            try {
+                const res = await fetch(`${PRODUCTS_API}/${id}`, { method: 'DELETE' });
+                if (!res.ok) throw new Error('Delete failed');
                 setProducts(prev => prev.filter(p => p.id !== id));
-            } else {
-                setProjects(prev => prev.filter(p => p.id !== id));
+            } catch (err) {
+                alert(err.message);
             }
-        } catch (err) {
-            alert(err.message);
+        } else {
+            setProjects(prev => prev.filter(p => p.id !== id));
         }
     };
 
-    const handleSubmit = async (formData, imageFile) => {
+    const handleSubmit = async (formData, imageFile = null) => {
         const isProduct = activeTab === 'products';
-        const url = isProduct ? PRODUCTS_API : PROJECTS_API;
 
-        try {
-            const data = new FormData();
-            Object.keys(formData).forEach(key => {
-                if (key !== 'id' && key !== 'image') {
-                    data.append(key, formData[key]);
+        if (isProduct) {
+            try {
+                const data = new FormData();
+                Object.keys(formData).forEach(key => {
+                    if (key !== 'id' && key !== 'image') {
+                        data.append(key, formData[key]);
+                    }
+                });
+                if (imageFile) data.append('image', imageFile);
+
+                if (editingItem) {
+                    const res = await fetch(`${PRODUCTS_API}/${editingItem.id}`, { method: 'PUT', body: data });
+                    if (!res.ok) throw new Error('Update failed');
+                    const updated = await res.json();
+                    setProducts(prev => prev.map(p => p.id === updated.id ? updated : p));
+                } else {
+                    const res = await fetch(PRODUCTS_API, { method: 'POST', body: data });
+                    if (!res.ok) throw new Error('Add failed');
+                    const newlyAdded = await res.json();
+                    setProducts(prev => [...prev, newlyAdded]);
                 }
-            });
-            if (imageFile) data.append('image', imageFile);
-
-            if (editingItem) {
-                const res = await fetch(`${url}/${editingItem.id}`, { method: 'PUT', body: data });
-                if (!res.ok) throw new Error('Update failed');
-                const updated = await res.json();
-                if (isProduct) setProducts(prev => prev.map(p => p.id === updated.id ? updated : p));
-                else setProjects(prev => prev.map(p => p.id === updated.id ? updated : p));
+                setIsModalOpen(false);
+            } catch (err) {
+                alert(err.message);
+            }
+        } else {
+            // Projects - formData has client, sector, image and projects array
+            const { client, sector, image, projects: newProjects } = formData;
+            
+            if (editingItem && editingItem.client) {
+                // Editing existing client - remove old projects for this client and add new ones
+                const otherProjects = projects.filter(p => p.client !== editingItem.client);
+                const updatedProjects = newProjects.map((proj, idx) => ({
+                    id: editingItem.projects[idx]?.id || Math.max(...projects.map(p => p.id), 0) + idx + 1,
+                    client,
+                    sector,
+                    image: image || null,
+                    year: proj.year,
+                    name: proj.name
+                }));
+                setProjects([...otherProjects, ...updatedProjects]);
             } else {
-                const res = await fetch(url, { method: 'POST', body: data });
-                if (!res.ok) throw new Error('Add failed');
-                const newlyAdded = await res.json();
-                if (isProduct) setProducts(prev => [...prev, newlyAdded]);
-                else setProjects(prev => [...prev, newlyAdded]);
+                // Adding new client with projects
+                const maxId = Math.max(...projects.map(p => p.id), 0);
+                const addedProjects = newProjects.map((proj, idx) => ({
+                    id: maxId + idx + 1,
+                    client,
+                    sector,
+                    image: image || null,
+                    year: proj.year,
+                    name: proj.name
+                }));
+                setProjects(prev => [...prev, ...addedProjects]);
             }
             setIsModalOpen(false);
-        } catch (err) {
-            alert(err.message);
         }
     };
 
@@ -127,7 +163,7 @@ const AdminPage = () => {
     const currentData = activeTab === 'products' ? products : projects;
 
     return (
-        <div className="min-h-screen bg-bg-base pt-32 pb-24 px-6">
+        <div className="min-h-screen pt-32 pb-24 px-6" style={{ backgroundColor: '#FFFFE3' }}>
             <div className="container mx-auto max-w-7xl">
                 {/* Header Sequence */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
@@ -177,14 +213,14 @@ const AdminPage = () => {
                         <h3 className="font-sora text-2xl font-semibold mb-4 text-text-primary">Backend Connection Offline</h3>
                         <p className="font-sans text-text-secondary max-w-md mx-auto">{error}</p>
                     </div>
-                ) : (
+                ) : activeTab === 'products' ? (
                     <div className="bg-bg-pure border border-border-soft rounded-2xl overflow-hidden shadow-sm">
                         <div className="overflow-x-auto">
                             <table className="w-full text-left font-sans">
                                 <thead>
                                     <tr className="bg-bg-base/50 text-text-secondary text-sm font-semibold border-b border-border-soft">
-                                        <th className="py-4 px-6 uppercase tracking-wider">{activeTab === 'products' ? 'Product' : 'Project'}</th>
-                                        <th className="py-4 px-6 uppercase tracking-wider">{activeTab === 'products' ? 'Brand' : 'Client'}</th>
+                                        <th className="py-4 px-6 uppercase tracking-wider">Product</th>
+                                        <th className="py-4 px-6 uppercase tracking-wider">Brand</th>
                                         <th className="py-4 px-6 uppercase tracking-wider">Category</th>
                                         <th className="py-4 px-6 uppercase tracking-wider">Featured</th>
                                         <th className="py-4 px-6 uppercase tracking-wider text-right">Actions</th>
@@ -204,11 +240,11 @@ const AdminPage = () => {
                                                     </div>
                                                     <div>
                                                         <div className="font-semibold text-text-primary">{item.name}</div>
-                                                        <div className="text-sm text-text-secondary truncate max-w-xs">{activeTab === 'products' ? item.description : item.scope}</div>
+                                                        <div className="text-sm text-text-secondary truncate max-w-xs">{item.description}</div>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="py-4 px-6 text-text-primary font-medium">{activeTab === 'products' ? item.brand : item.client}</td>
+                                            <td className="py-4 px-6 text-text-primary font-medium">{item.brand}</td>
                                             <td className="py-4 px-6">
                                                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-border-soft/50 text-text-secondary">
                                                     {item.category}
@@ -228,14 +264,14 @@ const AdminPage = () => {
                                                     <button
                                                         onClick={() => handleOpenEdit(item)}
                                                         className="p-2 text-text-secondary hover:text-accent bg-bg-base rounded-lg border border-border-soft hover:border-accent/30 transition-all"
-                                                        title={`Edit ${activeTab === 'products' ? 'Product' : 'Project'}`}
+                                                        title="Edit Product"
                                                     >
                                                         <Edit2 className="w-4 h-4" />
                                                     </button>
                                                     <button
                                                         onClick={() => handleDelete(item.id)}
                                                         className="p-2 text-text-secondary hover:text-red-500 bg-bg-base rounded-lg border border-border-soft hover:border-red-500/30 transition-all"
-                                                        title={`Delete ${activeTab === 'products' ? 'Product' : 'Project'}`}
+                                                        title="Delete Product"
                                                     >
                                                         <Trash2 className="w-4 h-4" />
                                                     </button>
@@ -253,6 +289,101 @@ const AdminPage = () => {
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                ) : (
+                    <div className="flex flex-col gap-4">
+                        {clients.map((client) => {
+                            const data = groupedProjects[client];
+                            const isExpanded = expandedClient === client;
+                            const color = sectorColors[data.sector] || sectorColors.Government;
+                            const projectCount = data.projects.length;
+
+                            return (
+                                <div
+                                    key={client}
+                                    className="bg-bg-pure border border-border-soft rounded-xl overflow-hidden"
+                                >
+                                    <div
+                                        onClick={() => setExpandedClient(isExpanded ? null : client)}
+                                        className="w-full flex items-center justify-between p-5 hover:bg-bg-base/50 transition-colors text-left cursor-pointer"
+                                    >
+                                        <div className="flex items-center gap-4 min-w-0 flex-grow pr-4">
+                                            {data.image && (
+                                                <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 border border-border-soft">
+                                                    <img src={data.image} alt={client} className="w-full h-full object-cover" />
+                                                </div>
+                                            )}
+                                            <div className="flex flex-col gap-2 min-w-0">
+                                                <h3 className="font-sora font-semibold text-lg text-text-primary truncate">
+                                                    {client}
+                                                </h3>
+                                                <div className="flex items-center gap-3 flex-wrap">
+                                                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${color.bg} ${color.text} ${color.border}`}>
+                                                        {data.sector}
+                                                    </span>
+                                                    <span className="font-sans text-sm text-text-muted">
+                                                        {projectCount} {projectCount === 1 ? 'project' : 'projects'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleOpenEdit({ client, ...data });
+                                                }}
+                                                className="p-2 text-text-secondary hover:text-accent bg-bg-base rounded-lg border border-border-soft hover:border-accent/30 transition-all"
+                                                title="Edit"
+                                            >
+                                                <Edit2 className="w-4 h-4" />
+                                            </button>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    if (window.confirm(`Are you sure you want to delete all projects for ${client}?`)) {
+                                                        setProjects(prev => prev.filter(p => p.client !== client));
+                                                    }
+                                                }}
+                                                className="p-2 text-text-secondary hover:text-red-500 bg-bg-base rounded-lg border border-border-soft hover:border-red-500/30 transition-all"
+                                                title="Delete"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
+                                            <ChevronDown className={`w-6 h-6 text-text-muted transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                                        </div>
+                                    </div>
+
+                                    {isExpanded && (
+                                        <div className="border-t border-border-soft bg-bg-base/30">
+                                            <div className="p-5">
+                                                {data.image && (
+                                                    <div className="mb-5">
+                                                        <img 
+                                                            src={data.image} 
+                                                            alt={client} 
+                                                            className="w-full h-40 object-cover rounded-lg"
+                                                        />
+                                                    </div>
+                                                )}
+                                                <div className="flex flex-col gap-3">
+                                                    {data.projects.map((proj) => (
+                                                        <div key={proj.id} className="flex items-start gap-4">
+                                                            <span className="font-mono text-sm font-semibold text-accent shrink-0 w-14">
+                                                                {proj.year}
+                                                            </span>
+                                                            <p className="font-sans text-sm text-text-secondary leading-relaxed">
+                                                                {proj.name}
+                                                            </p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 )}
             </div>
