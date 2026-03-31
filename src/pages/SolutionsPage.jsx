@@ -99,7 +99,8 @@ const SolutionsPage = () => {
                     return (
                         <section
                             key={sol.id}
-                            className={`py-24 ${isEven ? 'bg-bg-base' : 'bg-bg-pure border-y border-border-soft'}`}
+                            className="py-24"
+                            style={{ backgroundColor: '#FFFFE3' }}
                             ref={(el) => (sectionRefs.current[sol.name] = el)}
                         >
                             <div className="container mx-auto px-6 max-w-7xl">
